@@ -1,12 +1,17 @@
 :root {
-  --bg: #fbfaf7;
-  --ink: #14181c;
-  --grey: #5b6470;
-  --trust: #0f6b5c;
-  --action: #e8890c;
-  --teacher: #3b4cca;
-  --hairline: rgba(0, 0, 0, 0.08);
+  --bg: #f7f7f2;
+  --ink: #16181d;
+  --grey: #6b7280;
+  --trust: #16181d;
+  --action: #c8f169;
+  --action-ink: #14310a;
+  --lilac: #c9b8f2;
+  --sky: #bcd8f2;
+  --peach: #f6c9a8;
+  --lime: #cdf08a;
+  --hairline: rgba(22, 24, 29, 0.08);
   --card: #ffffff;
+  --panel: #ecece4;
   --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto,
     sans-serif;
 
@@ -63,13 +68,9 @@ a {
 }
 
 :focus-visible {
-  outline: 2px solid var(--trust);
+  outline: 2px solid var(--ink);
   outline-offset: 2px;
   border-radius: 4px;
-}
-
-.band :focus-visible {
-  outline-color: #ffffff;
 }
 
 .nums {

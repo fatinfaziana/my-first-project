@@ -15,7 +15,7 @@
 .sidebar {
   flex: 0 0 248px;
   width: 248px;
-  background: #ffffff;
+  background: #f1f0ea;
   border-right: 1px solid var(--hairline);
   padding: 24px 16px;
   position: sticky;
@@ -38,8 +38,8 @@
   width: 40px;
   height: 40px;
   border-radius: 12px;
-  background: rgba(15, 107, 92, 0.12);
-  color: var(--trust);
+  background: var(--action);
+  color: var(--action-ink);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -87,51 +87,21 @@
 }
 
 .sidebar__link svg {
-  color: var(--grey);
+  color: var(--ink);
+  opacity: 0.75;
   flex: 0 0 auto;
 }
 
 .sidebar__link:hover,
 .sidebar__link:focus-visible {
-  background: rgba(15, 107, 92, 0.08);
+  background: var(--action);
+  color: var(--action-ink);
 }
 
 .sidebar__link:hover svg,
 .sidebar__link:focus-visible svg {
-  color: var(--trust);
-}
-
-/* Colourful shortcut accents (from the EdTech reference) */
-.sidebar__link--profile:hover {
-  background: rgba(59, 76, 202, 0.1);
-}
-
-.sidebar__link--subjects:hover {
-  background: rgba(15, 107, 92, 0.1);
-}
-
-.sidebar__link--availability:hover {
-  background: rgba(232, 137, 12, 0.14);
-}
-
-.sidebar__link--feedback:hover {
-  background: rgba(59, 76, 202, 0.1);
-}
-
-.sidebar__link--products:hover {
-  background: rgba(15, 107, 92, 0.1);
-}
-
-.sidebar__link--teachers:hover {
-  background: rgba(59, 76, 202, 0.1);
-}
-
-.sidebar__link--collaborate:hover {
-  background: rgba(232, 137, 12, 0.14);
-}
-
-.sidebar__link--book:hover {
-  background: rgba(232, 137, 12, 0.16);
+  color: var(--action-ink);
+  opacity: 1;
 }
 
 .sidebar__note {
@@ -173,11 +143,16 @@
 }
 
 .eyebrow--light {
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--grey);
 }
 
 .accent {
-  color: var(--trust);
+  background: var(--action);
+  color: var(--action-ink);
+  padding: 0 8px;
+  border-radius: 8px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 .section__lead {
@@ -193,9 +168,9 @@
 /* Buttons */
 .btn {
   display: inline-block;
-  border-radius: 12px;
-  padding: 14px 22px;
-  font-size: 1rem;
+  border-radius: 999px;
+  padding: 13px 24px;
+  font-size: 0.9375rem;
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
@@ -203,43 +178,50 @@
 }
 
 .btn--primary {
-  background: var(--action);
-  color: var(--ink);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: var(--ink);
+  color: #ffffff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .btn--primary:hover,
 .btn--primary:focus-visible {
   transform: translateY(-1px);
-  box-shadow: 0 8px 20px rgba(232, 137, 12, 0.28);
+  background: #000000;
+  box-shadow: 0 10px 24px rgba(22, 24, 29, 0.22);
 }
 
 .link-secondary {
-  color: var(--trust);
+  color: var(--ink);
   text-decoration: none;
   font-weight: 600;
-  border-bottom: 1px solid var(--trust);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.link-secondary::after {
+  content: '→';
 }
 
 /* Tags */
 .tag {
   display: inline-block;
   border-radius: 999px;
-  padding: 4px 12px;
+  padding: 5px 14px;
   font-size: 0.8125rem;
   font-weight: 600;
 }
 
 .tag--action {
-  background: rgba(232, 137, 12, 0.14);
-  color: #8a5100;
-  border: 1px solid rgba(232, 137, 12, 0.4);
+  background: var(--action);
+  color: var(--action-ink);
+  border: 1px solid transparent;
 }
 
 .tag--preview {
   background: #ffffff;
-  color: var(--trust);
-  border: 1px solid #ffffff;
+  color: var(--ink);
+  border: 1px solid var(--hairline);
 }
 
 /* Hero */
@@ -279,14 +261,15 @@
 .hero__card {
   background: var(--card);
   border: 1px solid var(--hairline);
-  border-radius: 16px;
+  border-radius: 20px;
   padding: 28px;
+  box-shadow: 0 12px 32px rgba(22, 24, 29, 0.06);
 }
 
 .hero__portrait {
-  color: var(--trust);
-  border-radius: 12px;
-  background: rgba(15, 107, 92, 0.08);
+  color: var(--action-ink);
+  border-radius: 16px;
+  background: var(--action);
   width: 88px;
   height: 88px;
   display: flex;
@@ -356,7 +339,7 @@
 }
 
 .row__status {
-  color: var(--trust);
+  color: #4a7c1a;
   font-weight: 600;
 }
 
@@ -408,15 +391,18 @@
 }
 
 .legend__dot--free {
-  background: var(--trust);
+  background: var(--lime);
+  border: 1px solid #9ecf45;
 }
 
 .legend__dot--partial {
-  background: var(--action);
+  background: var(--peach);
+  border: 1px solid #e5a878;
 }
 
 .legend__dot--booked {
-  background: #8a2a20;
+  background: #d8b7b2;
+  border: 1px solid #b98f89;
 }
 
 .calendar__weekdays,
@@ -457,14 +443,14 @@
 }
 
 .calendar__day--partial {
-  border-color: rgba(232, 137, 12, 0.55);
-  background: rgba(232, 137, 12, 0.07);
+  border-color: #e5a878;
+  background: #fdeede;
 }
 
 .calendar__day--full {
-  background: #efe0de;
+  background: #eee2e0;
   border-color: #d8b7b2;
-  color: #7a4a42;
+  color: #8a645e;
   cursor: not-allowed;
 }
 
@@ -474,12 +460,13 @@
 
 .calendar__day:not(:disabled):hover,
 .calendar__day:focus-visible {
-  border-color: var(--trust);
+  border-color: var(--ink);
 }
 
 .calendar__day--selected {
-  border-color: var(--trust);
-  background: rgba(15, 107, 92, 0.12);
+  border-color: var(--ink);
+  background: var(--action);
+  color: var(--action-ink);
 }
 
 .calendar__date {
@@ -495,12 +482,12 @@
 }
 
 .calendar__mark--full {
-  color: #8a2a20;
+  color: #8a645e;
   font-weight: 700;
 }
 
 .calendar__mark--partial {
-  color: #8a5100;
+  color: #a5622a;
   font-weight: 600;
 }
 
@@ -521,11 +508,11 @@
 }
 
 .slot-status--free {
-  color: var(--trust);
+  color: #4a7c1a;
 }
 
 .slot-status--booked {
-  color: #c0392b;
+  color: #a8543f;
 }
 
 /* Level blocks */
@@ -542,18 +529,18 @@
 }
 
 .level-block--mint {
-  background: #e4f2ec;
-  border-color: #bfe0d3;
+  background: #eaf6d6;
+  border-color: #d4ecb0;
 }
 
 .level-block--sky {
-  background: #e6eefb;
-  border-color: #c5d6f4;
+  background: #e3eefb;
+  border-color: #c4daf3;
 }
 
 .level-block--peach {
-  background: #fbe9e6;
-  border-color: #f2cdc5;
+  background: #fbe3d2;
+  border-color: #f2c8a6;
 }
 
 .level-block__name {
@@ -609,8 +596,8 @@
 
 /* Section tint */
 .section--tint {
-  background: rgba(59, 76, 202, 0.04);
-  border-radius: 20px;
+  background: #eae8f7;
+  border-radius: 24px;
   padding: 48px 28px;
   margin: 24px 0;
 }
@@ -663,18 +650,20 @@
 
 .btn--secondary {
   background: transparent;
-  border: 1px solid var(--trust);
-  color: var(--trust);
+  border: 1px solid var(--ink);
+  color: var(--ink);
   font-weight: 600;
-  border-radius: 12px;
-  padding: 12px 18px;
+  border-radius: 999px;
+  padding: 12px 20px;
   font-size: 0.9375rem;
   cursor: pointer;
 }
 
 .btn--secondary:hover,
 .btn--secondary:focus-visible {
-  background: rgba(15, 107, 92, 0.08);
+  background: var(--action);
+  border-color: var(--action);
+  color: var(--action-ink);
 }
 
 /* Cards */
@@ -687,8 +676,9 @@
 .card {
   background: var(--card);
   border: 1px solid var(--hairline);
-  border-radius: 16px;
+  border-radius: 18px;
   padding: 24px;
+  box-shadow: 0 8px 24px rgba(22, 24, 29, 0.05);
 }
 
 .card__title {
@@ -719,7 +709,7 @@
 }
 
 .package-card--popular {
-  border-color: rgba(232, 137, 12, 0.5);
+  border-color: var(--action);
 }
 
 .package-card .tag--action {
@@ -749,9 +739,9 @@
 }
 
 .product-card__media {
-  color: var(--trust);
-  background: rgba(15, 107, 92, 0.08);
-  border-radius: 12px;
+  color: var(--action-ink);
+  background: var(--lime);
+  border-radius: 14px;
   height: 96px;
   display: flex;
   align-items: center;
@@ -761,15 +751,16 @@
 
 /* Teacher demo band */
 .band {
-  background: var(--trust);
-  color: #ffffff;
-  border-radius: 20px;
+  background: #efe9f8;
+  color: var(--ink);
+  border: 1px solid var(--hairline);
+  border-radius: 24px;
   margin: 24px 0;
   padding: 48px 28px;
 }
 
 .band h2 {
-  color: #ffffff;
+  color: var(--ink);
   margin-top: 4px;
 }
 
@@ -779,14 +770,14 @@
 }
 
 .band__description {
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--grey);
   max-width: 60ch;
 }
 
 .steps {
   margin: 20px 0 24px;
   padding-left: 20px;
-  color: rgba(255, 255, 255, 0.92);
+  color: var(--grey);
 }
 
 .steps li {
@@ -794,17 +785,18 @@
 }
 
 .demo-card {
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid var(--hairline);
+  border-radius: 18px;
   padding: 24px;
+  box-shadow: 0 10px 30px rgba(22, 24, 29, 0.06);
 }
 
 .demo-card__label {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--grey);
   margin: 0 0 12px;
 }
 
@@ -814,7 +806,7 @@
 }
 
 .demo-card__answer {
-  color: rgba(255, 255, 255, 0.92);
+  color: var(--ink);
   margin: 0 0 16px;
   font-style: italic;
 }
@@ -829,17 +821,18 @@
 }
 
 .demo-card__keywords li {
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: var(--action);
   border-radius: 999px;
-  padding: 2px 10px;
+  padding: 3px 12px;
   font-size: 0.8125rem;
-  color: #ffffff;
+  font-weight: 500;
+  color: var(--action-ink);
 }
 
 .demo-card__marks {
   margin: 0;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--ink);
 }
 
 /* Booking flow */
@@ -899,12 +892,18 @@
 
 .option:hover,
 .option:focus-visible {
-  border-color: var(--trust);
+  border-color: var(--ink);
 }
 
 .option--selected {
-  border-color: var(--trust);
-  background: rgba(15, 107, 92, 0.08);
+  border-color: var(--ink);
+  background: var(--action);
+  color: var(--action-ink);
+}
+
+.option--selected .option__meta {
+  color: var(--action-ink);
+  opacity: 0.8;
 }
 
 .option__title {
@@ -918,9 +917,9 @@
 }
 
 .price-panel {
-  background: var(--card);
+  background: #f1f0ea;
   border: 1px solid var(--hairline);
-  border-radius: 16px;
+  border-radius: 18px;
   padding: 24px;
 }
 
@@ -928,6 +927,7 @@
   margin: 0 0 16px;
   font-size: 2rem;
   font-weight: 700;
+  color: var(--ink);
 }
 
 .price-panel__note {
@@ -981,13 +981,13 @@
 }
 
 .field input:focus-visible {
-  outline: 2px solid var(--trust);
+  outline: 2px solid var(--ink);
   outline-offset: 1px;
-  border-color: var(--trust);
+  border-color: var(--ink);
 }
 
 .booking__error {
-  color: #c0392b;
+  color: #b3402a;
   min-height: 1.25em;
   margin: 0 0 12px;
   font-weight: 600;
@@ -1083,7 +1083,7 @@
 }
 
 .check-list svg {
-  color: var(--trust);
+  color: #4a7c1a;
   flex: 0 0 auto;
 }
 
