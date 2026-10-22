@@ -48,13 +48,17 @@ export const LEVELS = [
 ]
 
 export const PROFILE = {
-  heading: 'About your tutor',
+  heading: 'About the tuition service',
   name: 'The tutor',
+  intro:
+    'A tuition service built on ten years of teaching experience, with one aim: helping every student walk into their exam prepared and confident.',
   paragraphs: [
-    'Ten years of classroom and one-to-one experience across SPM, IGCSE and A-Level, focused on explaining the why behind each answer rather than memorising steps.',
-    'Lessons are planned around the student: past-paper practice first, then targeted work on the topics that keep costing marks.',
+    'For ten years this service has tutored students across SPM, IGCSE and A-Level, teaching the why behind each answer instead of memorising steps. Students who commit to the weekly routine consistently finish with strong results and a calmer exam season.',
+    'Lessons are planned around the student: past-paper practice first, then targeted work on the topics that keep costing marks. This is a teaching background first, and a service built to make that teaching work for each family.',
   ],
   points: [
+    '10 years of tutoring experience',
+    'A track record of strong student results',
     'SPM, IGCSE and A-Level subject specialist',
     'Small groups (2–4) or one-to-one',
     'Weekly feedback on each student’s progress',
@@ -85,6 +89,11 @@ export const PACKAGES = [
 export const AVAILABILITY = {
   heading: 'Availability',
   freeTrialChip: 'Free trial class available',
+  note: 'Sample calendar. Pick a date to see the free and booked slots for that day.',
+  statuses: {
+    free: 'Free',
+    booked: 'Booked',
+  },
   slots: [
     { id: 'mon-1930', day: 'Monday', time: '7:30 PM', mode: 'Online' },
     { id: 'wed-1930', day: 'Wednesday', time: '7:30 PM', mode: 'Online' },
@@ -93,6 +102,64 @@ export const AVAILABILITY = {
     { id: 'sat-1400', day: 'Saturday', time: '2:00 PM', mode: 'Online' },
     { id: 'sun-1000', day: 'Sunday', time: '10:00 AM', mode: 'Online' },
   ],
+  calendar: {
+    month: 'Sample Month',
+    weekdays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    days: [
+      { date: 1, weekday: 'Mon', slots: [] },
+      { date: 2, weekday: 'Tue', slots: [] },
+      {
+        date: 3,
+        weekday: 'Wed',
+        slots: [{ time: '7:30 PM', mode: 'Online', status: 'free' }],
+      },
+      { date: 4, weekday: 'Thu', slots: [] },
+      { date: 5, weekday: 'Fri', slots: [] },
+      {
+        date: 6,
+        weekday: 'Sat',
+        slots: [
+          { time: '10:00 AM', mode: 'In person', status: 'booked' },
+          { time: '2:00 PM', mode: 'Online', status: 'free' },
+        ],
+      },
+      {
+        date: 7,
+        weekday: 'Sun',
+        slots: [{ time: '10:00 AM', mode: 'Online', status: 'free' }],
+      },
+      {
+        date: 8,
+        weekday: 'Mon',
+        slots: [{ time: '7:30 PM', mode: 'Online', status: 'free' }],
+      },
+      { date: 9, weekday: 'Tue', slots: [] },
+      {
+        date: 10,
+        weekday: 'Wed',
+        slots: [{ time: '7:30 PM', mode: 'Online', status: 'booked' }],
+      },
+      {
+        date: 11,
+        weekday: 'Thu',
+        slots: [{ time: '5:00 PM', mode: 'In person', status: 'free' }],
+      },
+      { date: 12, weekday: 'Fri', slots: [] },
+      {
+        date: 13,
+        weekday: 'Sat',
+        slots: [
+          { time: '10:00 AM', mode: 'In person', status: 'free' },
+          { time: '2:00 PM', mode: 'Online', status: 'booked' },
+        ],
+      },
+      {
+        date: 14,
+        weekday: 'Sun',
+        slots: [{ time: '10:00 AM', mode: 'Online', status: 'free' }],
+      },
+    ],
+  },
 }
 
 export const FEEDBACK = {

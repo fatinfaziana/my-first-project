@@ -257,6 +257,148 @@
   margin-top: 20px;
 }
 
+/* Calendar */
+.calendar {
+  margin-top: 24px;
+  max-width: 720px;
+}
+
+.calendar__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.calendar__month {
+  margin: 0;
+  font-weight: 600;
+}
+
+.calendar__legend {
+  display: flex;
+  gap: 16px;
+  margin: 0;
+  color: var(--grey);
+  font-size: 0.875rem;
+}
+
+.legend__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+.legend__dot--free {
+  background: var(--trust);
+}
+
+.legend__dot--booked {
+  background: #c0392b;
+}
+
+.calendar__weekdays,
+.calendar__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+.calendar__weekday {
+  text-align: center;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--grey);
+  padding-bottom: 6px;
+}
+
+.calendar__day {
+  aspect-ratio: 1 / 1;
+  border: 1px solid var(--hairline);
+  border-radius: 10px;
+  background: var(--card);
+  font: inherit;
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 4px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.calendar__day:disabled {
+  background: transparent;
+  color: #b4bac1;
+  border-style: dashed;
+  cursor: default;
+}
+
+.calendar__day:not(:disabled):hover,
+.calendar__day:focus-visible {
+  border-color: var(--trust);
+}
+
+.calendar__day--free {
+  border-color: rgba(15, 107, 92, 0.5);
+}
+
+.calendar__day--selected {
+  border-color: var(--trust);
+  background: rgba(15, 107, 92, 0.1);
+}
+
+.calendar__date {
+  font-weight: 600;
+}
+
+.calendar__dots {
+  display: flex;
+  gap: 3px;
+  min-height: 10px;
+}
+
+.calendar__dots .legend__dot {
+  width: 7px;
+  height: 7px;
+}
+
+.calendar__detail {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--hairline);
+}
+
+.calendar__detail-title {
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+
+.calendar__hint {
+  color: var(--grey);
+  margin: 0;
+}
+
+.slot-status--free {
+  color: var(--trust);
+}
+
+.slot-status--booked {
+  color: #c0392b;
+}
+
 /* Level blocks */
 .levels-grid {
   display: grid;
@@ -760,5 +902,18 @@
 
   .booking__actions .btn {
     flex: 1;
+  }
+
+  .calendar__weekdays,
+  .calendar__grid {
+    gap: 4px;
+  }
+
+  .calendar__day {
+    border-radius: 8px;
+  }
+
+  .calendar__date {
+    font-size: 0.875rem;
   }
 }

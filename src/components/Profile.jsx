@@ -9,6 +9,7 @@ function Profile() {
       <p className="eyebrow">Profile</p>
       <h2 id="profile-heading">{PROFILE.heading}</h2>
       <div className="section__body reveal" ref={bodyRef}>
+        <p className="section__lead">{PROFILE.intro}</p>
         {PROFILE.paragraphs.map((paragraph) => (
           <p key={paragraph}>{paragraph}</p>
         ))}
