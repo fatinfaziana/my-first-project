@@ -195,49 +195,141 @@ export const FEEDBACK = {
 }
 
 export const PRODUCTS = {
-  heading: 'Products for teachers and students',
-  note: 'Sample products',
+  heading: 'Products and services',
+  note: 'Sample catalogue. Pick who it is for, then a stage and department to narrow the list.',
+  audiences: [
+    { id: 'teachers', label: 'For teachers', blurb: 'Tools that cut marking time.' },
+    {
+      id: 'students',
+      label: 'For students',
+      blurb: 'Answer checkers and completed teacher notes.',
+    },
+  ],
+  stages: [
+    { id: 'kindergarten', label: 'Kindergarten' },
+    { id: 'primary', label: 'Primary' },
+    { id: 'secondary', label: 'Secondary' },
+  ],
+  departments: [
+    { id: 'all', label: 'All departments' },
+    { id: 'science', label: 'Science' },
+    { id: 'maths', label: 'Maths' },
+    { id: 'language', label: 'Language' },
+    { id: 'humanities', label: 'Humanities' },
+  ],
   items: [
     {
-      id: 'prod-1',
+      id: 't-scan',
+      audience: 'teachers',
+      stage: 'secondary',
+      department: 'all',
       name: 'Camera marking helper',
       description:
-        'A teacher kit for marking answer papers faster, built around keyword marking.',
+        'Teachers enter the questions and the keywords that earn marks, then the system reads the answer paper and marks it. Built for objective and subjective papers.',
       price: 120,
     },
     {
-      id: 'prod-2',
-      name: 'Answer checker pack',
-      description: 'Practice sets with a self-check sheet so students confirm their own answers.',
+      id: 't-scan-primary',
+      audience: 'teachers',
+      stage: 'primary',
+      department: 'all',
+      name: 'Camera marking helper (Primary)',
+      description:
+        'The same keyword marking tool, set up for primary-level objective and short-answer papers.',
+      price: 95,
+    },
+    {
+      id: 's-check-sci-secondary',
+      audience: 'students',
+      stage: 'secondary',
+      department: 'science',
+      name: 'Science answer checker (SPM / IGCSE / A-Level)',
+      description:
+        'Practice sets with a self-check sheet so students confirm their own answers across Science subjects.',
       price: 40,
     },
     {
-      id: 'prod-3',
-      name: 'Completed teacher notes',
-      description: 'Full topic notes finished by a teacher, ready to study or teach from.',
+      id: 's-check-maths-secondary',
+      audience: 'students',
+      stage: 'secondary',
+      department: 'maths',
+      name: 'Maths answer checker (SPM / IGCSE / A-Level)',
+      description:
+        'Worked practice sets with a self-check sheet so students mark their own Maths answers.',
+      price: 40,
+    },
+    {
+      id: 's-check-primary',
+      audience: 'students',
+      stage: 'primary',
+      department: 'all',
+      name: 'Primary answer checker',
+      description:
+        'Practice sets for primary subjects with a self-check sheet for students and parents.',
+      price: 30,
+    },
+    {
+      id: 's-check-kinder',
+      audience: 'students',
+      stage: 'kindergarten',
+      department: 'all',
+      name: 'Kindergarten practice pack',
+      description:
+        'Playful early-years practice sheets with a simple self-check for parents.',
+      price: 20,
+    },
+    {
+      id: 's-notes-sci-secondary',
+      audience: 'students',
+      stage: 'secondary',
+      department: 'science',
+      name: 'Completed Science notes',
+      description:
+        'Full topic notes finished by a teacher, ready to study from for SPM, IGCSE and A-Level Science.',
       price: 55,
     },
+    {
+      id: 's-notes-maths-secondary',
+      audience: 'students',
+      stage: 'secondary',
+      department: 'maths',
+      name: 'Completed Maths notes',
+      description:
+        'Full topic notes finished by a teacher, ready to study from for SPM, IGCSE and A-Level Maths.',
+      price: 55,
+    },
+    {
+      id: 's-notes-lang-secondary',
+      audience: 'students',
+      stage: 'secondary',
+      department: 'language',
+      name: 'Completed Language notes',
+      description:
+        'Full topic notes finished by a teacher for English and other languages at secondary level.',
+      price: 50,
+    },
+    {
+      id: 's-notes-primary',
+      audience: 'students',
+      stage: 'primary',
+      department: 'all',
+      name: 'Completed Primary notes',
+      description:
+        'Full topic notes finished by a teacher, covering all primary subjects.',
+      price: 45,
+    },
+    {
+      id: 's-notes-kinder',
+      audience: 'students',
+      stage: 'kindergarten',
+      department: 'all',
+      name: 'Kindergarten teacher notes',
+      description:
+        'Ready-made early-years notes and activity guides finished by a teacher.',
+      price: 35,
+    },
   ],
-}
-
-export const TEACHER_DEMO = {
-  heading: 'For teachers: mark papers faster',
-  eyebrow: 'Teacher service',
-  description:
-    'This service helps teachers mark papers faster. Teachers enter the questions and the expected answers with the keywords that earn marks, then the system reads the paper and marks it against those keywords. It is built to work for both objective and subjective papers, with the goal of cutting marking time.',
-  steps: [
-    'Enter the questions and the marking keywords',
-    'Capture the answer paper',
-    'Read the handwriting and match the keywords',
-    'Return the marks for objective and subjective papers',
-  ],
-  sample: {
-    label: 'Sample preview',
-    question: 'Name the process plants use to make food.',
-    answer: 'photosynthesis',
-    keywords: ['photosynthesis', 'sunlight', 'chlorophyll'],
-    marks: '2 / 3',
-  },
+  emptyNote: 'No products match that choice yet. Try another stage or department.',
 }
 
 export const CONTACT = {
@@ -257,7 +349,6 @@ export const NAV_LINKS = [
   { id: 'availability', label: 'Availability', icon: 'calendar' },
   { id: 'feedback', label: 'Feedback', icon: 'feedback' },
   { id: 'products', label: 'Products', icon: 'products' },
-  { id: 'teachers', label: 'For teachers', icon: 'teacher' },
   { id: 'collaborate', label: 'Collaborate', icon: 'collaborate' },
   { id: 'booking', label: 'Book a class', icon: 'book' },
 ]

@@ -749,90 +749,61 @@
   margin-bottom: 16px;
 }
 
-/* Teacher demo band */
-.band {
-  background: #efe9f8;
-  color: var(--ink);
-  border: 1px solid var(--hairline);
-  border-radius: 24px;
-  margin: 24px 0;
-  padding: 48px 28px;
-}
-
-.band h2 {
-  color: var(--ink);
-  margin-top: 4px;
-}
-
-.band__inner {
+/* Product filters */
+.product-filters {
   display: grid;
-  gap: 32px;
+  gap: 20px;
+  margin: 20px 0 8px;
 }
 
-.band__description {
-  color: var(--grey);
-  max-width: 60ch;
+.product-filters__group {
+  display: grid;
+  gap: 8px;
 }
 
-.steps {
-  margin: 20px 0 24px;
-  padding-left: 20px;
-  color: var(--grey);
-}
-
-.steps li {
-  margin-bottom: 6px;
-}
-
-.demo-card {
-  background: #ffffff;
-  border: 1px solid var(--hairline);
-  border-radius: 18px;
-  padding: 24px;
-  box-shadow: 0 10px 30px rgba(22, 24, 29, 0.06);
-}
-
-.demo-card__label {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--grey);
-  margin: 0 0 12px;
-}
-
-.demo-card__question {
+.product-filters__label {
+  margin: 0;
   font-weight: 600;
-  margin: 0 0 8px;
+  font-size: 0.9375rem;
 }
 
-.demo-card__answer {
-  color: var(--ink);
-  margin: 0 0 16px;
-  font-style: italic;
+.option-grid--audience {
+  grid-template-columns: repeat(2, 1fr);
 }
 
-.demo-card__keywords {
+.chip-row {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  list-style: none;
-  margin: 0 0 16px;
-  padding: 0;
 }
 
-.demo-card__keywords li {
-  background: var(--action);
-  border-radius: 999px;
-  padding: 3px 12px;
-  font-size: 0.8125rem;
+.chip--button {
+  background: #ffffff;
+  border: 1px solid var(--hairline);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.875rem;
   font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 999px;
+  color: var(--ink);
+  transition: background 0.18s ease, border-color 0.18s ease;
+}
+
+.chip--button:hover,
+.chip--button:focus-visible {
+  border-color: var(--ink);
+}
+
+.chip--active {
+  background: var(--action);
+  border-color: var(--action);
   color: var(--action-ink);
 }
 
-.demo-card__marks {
-  margin: 0;
-  font-weight: 700;
-  color: var(--ink);
+.product-empty {
+  color: var(--grey);
+  margin-top: 16px;
 }
 
 /* Booking flow */
@@ -1141,15 +1112,6 @@
     grid-template-columns: 1fr 1fr;
     align-items: start;
   }
-
-  .band__inner {
-    grid-template-columns: 1.4fr 1fr;
-    align-items: start;
-  }
-
-  .band {
-    padding: 64px 48px;
-  }
 }
 
 @media (max-width: 900px) {
@@ -1242,6 +1204,10 @@
 
   .option-grid,
   .option-grid--slots {
+    grid-template-columns: 1fr;
+  }
+
+  .option-grid--audience {
     grid-template-columns: 1fr;
   }
 

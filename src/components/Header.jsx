@@ -49,13 +49,6 @@ function SidebarIcon({ name }) {
           <path d="M3 7v10l9 4 9-4V7" />
         </svg>
       )
-    case 'teacher':
-      return (
-        <svg {...common}>
-          <path d="M3 9l9-5 9 5-9 5-9-5z" />
-          <path d="M7 11v5c0 1.1 2.2 2 5 2s5-.9 5-2v-5" />
-        </svg>
-      )
     case 'collaborate':
       return (
         <svg {...common}>
