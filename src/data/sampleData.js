@@ -86,13 +86,40 @@ export const PACKAGES = [
   },
 ]
 
+export const COURSE_COLORS = {
+  spm: 'mint',
+  igcse: 'sky',
+  alevel: 'peach',
+}
+
+export const COLLABORATE = {
+  heading: 'Collaborate with us',
+  eyebrow: 'For teachers',
+  intro:
+    'Teachers are welcome to join and teach their own subjects. Send your resume and the subjects you can teach, and we will get back to you.',
+  subjectsNote: 'Subjects we are looking for',
+  subjects: [
+    'Mathematics (SPM, IGCSE, A-Level)',
+    'Additional Mathematics',
+    'Physics',
+    'Chemistry',
+    'Biology',
+    'English',
+    'Economics',
+  ],
+  successTitle: 'Thank you — your collaboration request is ready.',
+  successText: 'This is a sample page, nothing was sent or saved.',
+}
+
 export const AVAILABILITY = {
   heading: 'Availability',
   freeTrialChip: 'Free trial class available',
-  note: 'Sample calendar. Pick a date to see the free and booked slots for that day.',
+  note: 'Sample calendar for a full month. Free days can be picked; fully booked days are shaded and cannot be picked.',
   statuses: {
     free: 'Free',
     booked: 'Booked',
+    full: 'Fully booked',
+    open: 'Open',
   },
   slots: [
     { id: 'mon-1930', day: 'Monday', time: '7:30 PM', mode: 'Online' },
@@ -104,61 +131,38 @@ export const AVAILABILITY = {
   ],
   calendar: {
     month: 'Sample Month',
-    weekdays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-    days: [
-      { date: 1, weekday: 'Mon', slots: [] },
-      { date: 2, weekday: 'Tue', slots: [] },
-      {
-        date: 3,
-        weekday: 'Wed',
-        slots: [{ time: '7:30 PM', mode: 'Online', status: 'free' }],
-      },
-      { date: 4, weekday: 'Thu', slots: [] },
-      { date: 5, weekday: 'Fri', slots: [] },
-      {
-        date: 6,
-        weekday: 'Sat',
-        slots: [
-          { time: '10:00 AM', mode: 'In person', status: 'booked' },
-          { time: '2:00 PM', mode: 'Online', status: 'free' },
-        ],
-      },
-      {
-        date: 7,
-        weekday: 'Sun',
-        slots: [{ time: '10:00 AM', mode: 'Online', status: 'free' }],
-      },
-      {
-        date: 8,
-        weekday: 'Mon',
-        slots: [{ time: '7:30 PM', mode: 'Online', status: 'free' }],
-      },
-      { date: 9, weekday: 'Tue', slots: [] },
-      {
-        date: 10,
-        weekday: 'Wed',
-        slots: [{ time: '7:30 PM', mode: 'Online', status: 'booked' }],
-      },
-      {
-        date: 11,
-        weekday: 'Thu',
-        slots: [{ time: '5:00 PM', mode: 'In person', status: 'free' }],
-      },
-      { date: 12, weekday: 'Fri', slots: [] },
-      {
-        date: 13,
-        weekday: 'Sat',
-        slots: [
-          { time: '10:00 AM', mode: 'In person', status: 'free' },
-          { time: '2:00 PM', mode: 'Online', status: 'booked' },
-        ],
-      },
-      {
-        date: 14,
-        weekday: 'Sun',
-        slots: [{ time: '10:00 AM', mode: 'Online', status: 'free' }],
-      },
-    ],
+    year: 2026,
+    firstWeekday: 3,
+    dayCount: 31,
+    fullyBooked: [4, 5, 12, 18, 19, 20, 25, 26],
+    partlyBooked: [3, 6, 10, 13, 17, 24, 27],
+    daySlots: {
+      3: [
+        { time: '7:30 PM', mode: 'Online', status: 'free' },
+        { time: '5:00 PM', mode: 'In person', status: 'booked' },
+      ],
+      6: [
+        { time: '10:00 AM', mode: 'In person', status: 'booked' },
+        { time: '2:00 PM', mode: 'Online', status: 'free' },
+      ],
+      10: [
+        { time: '7:30 PM', mode: 'Online', status: 'booked' },
+        { time: '8:30 PM', mode: 'Online', status: 'free' },
+      ],
+      13: [
+        { time: '10:00 AM', mode: 'In person', status: 'free' },
+        { time: '2:00 PM', mode: 'Online', status: 'booked' },
+      ],
+      17: [
+        { time: '5:00 PM', mode: 'In person', status: 'booked' },
+        { time: '7:30 PM', mode: 'Online', status: 'free' },
+      ],
+      24: [{ time: '7:30 PM', mode: 'Online', status: 'booked' }],
+      27: [
+        { time: '10:00 AM', mode: 'In person', status: 'free' },
+        { time: '2:00 PM', mode: 'Online', status: 'free' },
+      ],
+    },
   },
 }
 
@@ -248,13 +252,14 @@ export const CONTACT = {
 }
 
 export const NAV_LINKS = [
-  { id: 'profile', label: 'Profile' },
-  { id: 'subjects', label: 'Subjects & prices' },
-  { id: 'availability', label: 'Availability' },
-  { id: 'feedback', label: 'Feedback' },
-  { id: 'products', label: 'Products' },
-  { id: 'teachers', label: 'For teachers' },
-  { id: 'booking', label: 'Book' },
+  { id: 'profile', label: 'Profile', icon: 'profile' },
+  { id: 'subjects', label: 'What you can study', icon: 'subjects' },
+  { id: 'availability', label: 'Availability', icon: 'calendar' },
+  { id: 'feedback', label: 'Feedback', icon: 'feedback' },
+  { id: 'products', label: 'Products', icon: 'products' },
+  { id: 'teachers', label: 'For teachers', icon: 'teacher' },
+  { id: 'collaborate', label: 'Collaborate', icon: 'collaborate' },
+  { id: 'booking', label: 'Book a class', icon: 'book' },
 ]
 
 export const PLACEHOLDER = 'RM -'
