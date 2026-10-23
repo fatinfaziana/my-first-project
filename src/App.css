@@ -405,26 +405,29 @@
   border: 1px solid #b98f89;
 }
 
-/* Calendar day states: green = pickable, red = fully booked */
+/* Calendar day states: whole cell green = pickable, whole cell red = fully booked */
 .calendar__day--free {
-  background: #eaf6d6;
-  border-color: #cfe9a4;
+  background: #7dc242;
+  border-color: #6aae33;
+  color: #ffffff;
 }
 
 .calendar__day--partial {
-  background: #e3f2d3;
-  border-color: #b8dd8a;
+  background: #8fd14f;
+  border-color: #6aae33;
+  color: #ffffff;
 }
 
 .calendar__day--free:not(:disabled):hover,
 .calendar__day--partial:not(:disabled):hover {
   border-color: var(--ink);
+  filter: brightness(0.95);
 }
 
 .calendar__day--full {
-  background: #f4c9c2;
-  border-color: #e0a49a;
-  color: #8a3b2c;
+  background: #d94b3d;
+  border-color: #b93a2e;
+  color: #ffffff;
   cursor: not-allowed;
 }
 
@@ -475,9 +478,8 @@
 }
 
 .calendar__day--selected {
-  border-color: var(--ink);
-  background: var(--action);
-  color: var(--action-ink);
+  outline: 3px solid var(--ink);
+  outline-offset: -3px;
 }
 
 .calendar__date {
@@ -493,12 +495,12 @@
 }
 
 .calendar__mark--full {
-  color: #8a3b2c;
+  color: #ffffff;
   font-weight: 700;
 }
 
 .calendar__mark--partial {
-  color: #4a7c1a;
+  color: #ffffff;
   font-weight: 600;
 }
 
