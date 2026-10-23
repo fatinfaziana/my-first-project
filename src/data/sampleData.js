@@ -193,7 +193,7 @@ export const AVAILABILITY = {
   statuses: {
     free: 'Free',
     partial: 'Partly free',
-    full: 'Fully booked',
+    full: 'FULLY BOOKED',
     open: 'Free',
     booked: 'Booked',
   },
