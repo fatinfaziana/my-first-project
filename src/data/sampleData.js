@@ -1,6 +1,6 @@
 export const SITE_NAME = 'Tuition Service Landing'
 
-export const TAGLINE = 'Tuition for SPM, IGCSE and A-Level — sample data'
+export const TAGLINE = 'Tuition for kindergarten to A-Level — sample data'
 
 export const HEADLINE = {
   before: 'Focused tuition that fits',
@@ -11,41 +11,11 @@ export const HEADLINE = {
 export const FREE_TRIAL_LINE =
   'Every new student gets one free trial class so you can see the fit before you commit.'
 
-export const OBJECTIVE_PRICE = 60
-export const COMBO_EXTRA_PRICE = 45
-
-export const LEVELS = [
-  {
-    id: 'spm',
-    name: 'SPM',
-    subjects: [
-      { id: 'spm-addmath', name: 'Additional Mathematics', level: 'SPM' },
-      { id: 'spm-chem', name: 'Chemistry', level: 'SPM' },
-      { id: 'spm-phy', name: 'Physics', level: 'SPM' },
-      { id: 'spm-bio', name: 'Biology', level: 'SPM' },
-    ],
-  },
-  {
-    id: 'igcse',
-    name: 'IGCSE',
-    subjects: [
-      { id: 'igcse-math', name: 'Mathematics', level: 'IGCSE' },
-      { id: 'igcse-chem', name: 'Chemistry', level: 'IGCSE' },
-      { id: 'igcse-bio', name: 'Biology', level: 'IGCSE' },
-      { id: 'igcse-eng', name: 'English', level: 'IGCSE' },
-    ],
-  },
-  {
-    id: 'alevel',
-    name: 'A-Level',
-    subjects: [
-      { id: 'alevel-math', name: 'Mathematics', level: 'A-Level' },
-      { id: 'alevel-chem', name: 'Chemistry', level: 'A-Level' },
-      { id: 'alevel-econ', name: 'Economics', level: 'A-Level' },
-      { id: 'alevel-phy', name: 'Physics', level: 'A-Level' },
-    ],
-  },
-]
+export const PRICES = {
+  single: 60,
+  comboExtra: 45,
+  mostPopularExtra: 35,
+}
 
 export const PROFILE = {
   heading: 'About the tuition service',
@@ -53,82 +23,180 @@ export const PROFILE = {
   intro:
     'A tuition service built on ten years of teaching experience, with one aim: helping every student walk into their exam prepared and confident.',
   paragraphs: [
-    'For ten years this service has tutored students across SPM, IGCSE and A-Level, teaching the why behind each answer instead of memorising steps. Students who commit to the weekly routine consistently finish with strong results and a calmer exam season.',
+    'For ten years this service has tutored students from kindergarten through to A-Level, teaching the why behind each answer instead of memorising steps. Students who commit to the weekly routine consistently finish with strong results and a calmer exam season.',
     'Lessons are planned around the student: past-paper practice first, then targeted work on the topics that keep costing marks. This is a teaching background first, and a service built to make that teaching work for each family.',
   ],
   points: [
     '10 years of tutoring experience',
     'A track record of strong student results',
-    'SPM, IGCSE and A-Level subject specialist',
+    'Kindergarten through A-Level',
+    'National and international syllabuses',
     'Small groups (2–4) or one-to-one',
-    'Weekly feedback on each student’s progress',
   ],
 }
 
-export const PACKAGES = [
+/* Subjects by stage and syllabus (National / International).
+   Sample lists, covering the subjects usually taught at each stage. */
+export const SUBJECT_CATALOGUE = [
   {
-    id: 'single',
-    name: 'Single subject',
-    includes: 'One subject, weekly class, past-paper practice',
-    popular: false,
+    id: 'kindergarten',
+    label: 'Kindergarten',
+    color: 'mint',
+    syllabuses: {
+      national: {
+        label: 'National',
+        subjects: [
+          'Early Literacy (Bahasa Melayu)',
+          'Early Literacy (English)',
+          'Early Numeracy',
+          'Islamic / Moral Education',
+          'Art and Craft',
+          'Music and Movement',
+        ],
+      },
+      international: {
+        label: 'International',
+        subjects: [
+          'Phonics and Reading',
+          'Early English',
+          'Early Mathematics',
+          'Discovery of the World',
+          'Creative Arts',
+          'Physical Play',
+        ],
+      },
+    },
   },
   {
-    id: 'combo-two',
-    name: 'Combo: two subjects',
-    includes: 'Two subjects, weekly classes, shared exam-technique hour',
-    popular: true,
+    id: 'primary',
+    label: 'Primary',
+    color: 'sky',
+    syllabuses: {
+      national: {
+        label: 'National',
+        subjects: [
+          'Bahasa Melayu',
+          'English',
+          'Mathematics',
+          'Science',
+          'Sejarah (History)',
+          'Pendidikan Islam / Moral',
+        ],
+      },
+      international: {
+        label: 'International',
+        subjects: [
+          'English',
+          'Mathematics',
+          'Science',
+          'Global Perspectives',
+          'Information and Communication Technology',
+          'Art and Design',
+        ],
+      },
+    },
   },
   {
-    id: 'combo-three',
-    name: 'Combo: three subjects',
-    includes: 'Three subjects, weekly classes, full revision plan',
-    popular: false,
+    id: 'secondary',
+    label: 'Secondary',
+    color: 'peach',
+    syllabuses: {
+      national: {
+        label: 'National',
+        subjects: [
+          'Bahasa Melayu',
+          'English',
+          'Mathematics',
+          'Additional Mathematics',
+          'Physics',
+          'Chemistry',
+          'Biology',
+          'Sejarah (History)',
+          'Pendidikan Islam / Moral',
+          'Prinsip Perakaunan',
+        ],
+      },
+      international: {
+        label: 'International',
+        subjects: [
+          'English Language',
+          'Mathematics',
+          'Further Mathematics',
+          'Physics',
+          'Chemistry',
+          'Biology',
+          'Economics',
+          'Business Studies',
+          'Computer Science',
+          'Accounting',
+        ],
+      },
+    },
   },
 ]
 
-export const COURSE_COLORS = {
-  spm: 'mint',
-  igcse: 'sky',
-  alevel: 'peach',
-}
-
-export const COLLABORATE = {
-  heading: 'Collaborate with us',
-  eyebrow: 'For teachers',
-  intro:
-    'Teachers are welcome to join and teach their own subjects. Send your resume and the subjects you can teach, and we will get back to you.',
-  subjectsNote: 'Subjects we are looking for',
-  subjects: [
-    'Mathematics (SPM, IGCSE, A-Level)',
-    'Additional Mathematics',
-    'Physics',
-    'Chemistry',
-    'Biology',
-    'English',
-    'Economics',
+/* Services offered, per audience. Students first. */
+export const SERVICES = {
+  heading: 'Products & services',
+  note: 'Choose who it is for, see the services, then pick your subjects to book.',
+  audiences: [
+    {
+      id: 'students',
+      label: 'For students',
+      blurb: 'Tuition, completed notes and answer checkers.',
+    },
+    {
+      id: 'teachers',
+      label: 'For teachers',
+      blurb: 'Tools that cut marking time.',
+    },
   ],
-  successTitle: 'Thank you — your collaboration request is ready.',
-  successText: 'This is a sample page, nothing was sent or saved.',
+  students: [
+    {
+      id: 'svc-tuition',
+      name: 'Tuition classes',
+      description:
+        'Weekly classes from kindergarten to A-Level, national or international syllabus, one-to-one or small group.',
+      price: 60,
+      from: true,
+    },
+    {
+      id: 'svc-notes',
+      name: 'Completed all-chapters notes',
+      description:
+        'Full notes for every chapter, finished by a teacher, available per subject.',
+      price: 55,
+    },
+    {
+      id: 'svc-checker',
+      name: 'Answer checker (scanner)',
+      description:
+        'Scan your answer sheet; it compares your answers against the correct answers and shows what to fix. In browser, with the backend to come.',
+      price: 40,
+    },
+  ],
+  teachers: [
+    {
+      id: 'svc-marking',
+      name: 'Marking helper',
+      description:
+        'Upload your marking scheme; it scans the keywords for each answer. Then scan a student’s answer to check it. Built to read handwriting, including hard-to-read writing.',
+      price: 120,
+    },
+  ],
 }
 
 export const AVAILABILITY = {
-  heading: 'Availability',
+  heading: 'Booking calendar',
   freeTrialChip: 'Free trial class available',
-  note: 'Sample calendar for a full month. Free days can be picked; fully booked days are shaded and cannot be picked.',
+  note: 'Green days are free or partly free and can be picked. Red days are fully booked and cannot be picked.',
   statuses: {
     free: 'Free',
-    booked: 'Booked',
+    partial: 'Partly free',
     full: 'Fully booked',
-    open: 'Open',
+    open: 'Free',
+    booked: 'Booked',
   },
-  slots: [
-    { id: 'mon-1930', day: 'Monday', time: '7:30 PM', mode: 'Online' },
-    { id: 'wed-1930', day: 'Wednesday', time: '7:30 PM', mode: 'Online' },
-    { id: 'thu-1700', day: 'Thursday', time: '5:00 PM', mode: 'In person' },
-    { id: 'sat-1000', day: 'Saturday', time: '10:00 AM', mode: 'In person' },
-    { id: 'sat-1400', day: 'Saturday', time: '2:00 PM', mode: 'Online' },
-    { id: 'sun-1000', day: 'Sunday', time: '10:00 AM', mode: 'Online' },
-  ],
   calendar: {
     month: 'Sample Month',
     year: 2026,
@@ -166,170 +234,93 @@ export const AVAILABILITY = {
   },
 }
 
+/* Combo packages, prioritising the most popular and best price. */
+export const PACKAGES = [
+  {
+    id: 'single',
+    name: 'Single subject',
+    includes: 'One subject, weekly class, past-paper practice',
+    popular: false,
+    extraRate: null,
+  },
+  {
+    id: 'combo-two',
+    name: 'Combo: two subjects',
+    includes: 'Two subjects, weekly classes, shared exam-technique hour',
+    popular: true,
+    tag: 'Most popular',
+    extraRate: 45,
+  },
+  {
+    id: 'combo-three',
+    name: 'Combo: three subjects',
+    includes: 'Three subjects, weekly classes, full revision plan',
+    popular: false,
+    tag: 'Best price',
+    extraRate: 35,
+  },
+]
+
 export const FEEDBACK = {
-  heading: 'What clients say',
-  note: 'Sample feedback',
+  heading: 'What parents and students say',
+  note: 'Sample feedback. Families who send feedback get a combo price free for 2 weeks.',
+  reward: 'Leave feedback and get a combo price free for 2 weeks.',
   items: [
     {
       id: 'fb-1',
       quote:
         'My daughter finally understood Chemistry calculations. The weekly feedback told me exactly what to watch.',
-      name: 'Aina',
+      parentName: 'Aina',
+      childName: 'Nur',
       subject: 'SPM Chemistry',
+      tone: 'mint',
     },
     {
       id: 'fb-2',
       quote:
         'Clear explanations and real past-paper practice every week. My grade moved up two bands.',
-      name: 'Daniel',
+      parentName: 'Daniel',
+      childName: 'Ryan',
       subject: 'IGCSE Mathematics',
+      tone: 'sky',
     },
     {
       id: 'fb-3',
       quote:
         'The combo plan kept both my subjects on schedule. I never had to chase the syllabus myself.',
-      name: 'Priya',
+      parentName: 'Priya',
+      childName: 'Anya',
       subject: 'A-Level Economics',
+      tone: 'peach',
     },
   ],
 }
 
-export const PRODUCTS = {
-  heading: 'Products and services',
-  note: 'Sample catalogue. Pick who it is for, then a stage and department to narrow the list.',
-  audiences: [
-    { id: 'teachers', label: 'For teachers', blurb: 'Tools that cut marking time.' },
-    {
-      id: 'students',
-      label: 'For students',
-      blurb: 'Answer checkers and completed teacher notes.',
-    },
-  ],
-  stages: [
+export const COLLABORATE = {
+  heading: 'Collaborate with us',
+  eyebrow: 'Partners and teachers',
+  intro:
+    'Teachers who want to teach, or anyone with an idea to grow the service, are welcome to work with us as partners. Send your details and a resume, and we will get back to you.',
+  levels: [
     { id: 'kindergarten', label: 'Kindergarten' },
     { id: 'primary', label: 'Primary' },
     { id: 'secondary', label: 'Secondary' },
   ],
-  departments: [
-    { id: 'all', label: 'All departments' },
-    { id: 'science', label: 'Science' },
-    { id: 'maths', label: 'Maths' },
-    { id: 'language', label: 'Language' },
-    { id: 'humanities', label: 'Humanities' },
+  subjects: [
+    'Mathematics',
+    'Additional Mathematics',
+    'Physics',
+    'Chemistry',
+    'Biology',
+    'English',
+    'Bahasa Melayu',
+    'Economics',
+    'Business Studies',
+    'Computer Science',
   ],
-  items: [
-    {
-      id: 't-scan',
-      audience: 'teachers',
-      stage: 'secondary',
-      department: 'all',
-      name: 'Camera marking helper',
-      description:
-        'Teachers enter the questions and the keywords that earn marks, then the system reads the answer paper and marks it. Built for objective and subjective papers.',
-      price: 120,
-    },
-    {
-      id: 't-scan-primary',
-      audience: 'teachers',
-      stage: 'primary',
-      department: 'all',
-      name: 'Camera marking helper (Primary)',
-      description:
-        'The same keyword marking tool, set up for primary-level objective and short-answer papers.',
-      price: 95,
-    },
-    {
-      id: 's-check-sci-secondary',
-      audience: 'students',
-      stage: 'secondary',
-      department: 'science',
-      name: 'Science answer checker (SPM / IGCSE / A-Level)',
-      description:
-        'Practice sets with a self-check sheet so students confirm their own answers across Science subjects.',
-      price: 40,
-    },
-    {
-      id: 's-check-maths-secondary',
-      audience: 'students',
-      stage: 'secondary',
-      department: 'maths',
-      name: 'Maths answer checker (SPM / IGCSE / A-Level)',
-      description:
-        'Worked practice sets with a self-check sheet so students mark their own Maths answers.',
-      price: 40,
-    },
-    {
-      id: 's-check-primary',
-      audience: 'students',
-      stage: 'primary',
-      department: 'all',
-      name: 'Primary answer checker',
-      description:
-        'Practice sets for primary subjects with a self-check sheet for students and parents.',
-      price: 30,
-    },
-    {
-      id: 's-check-kinder',
-      audience: 'students',
-      stage: 'kindergarten',
-      department: 'all',
-      name: 'Kindergarten practice pack',
-      description:
-        'Playful early-years practice sheets with a simple self-check for parents.',
-      price: 20,
-    },
-    {
-      id: 's-notes-sci-secondary',
-      audience: 'students',
-      stage: 'secondary',
-      department: 'science',
-      name: 'Completed Science notes',
-      description:
-        'Full topic notes finished by a teacher, ready to study from for SPM, IGCSE and A-Level Science.',
-      price: 55,
-    },
-    {
-      id: 's-notes-maths-secondary',
-      audience: 'students',
-      stage: 'secondary',
-      department: 'maths',
-      name: 'Completed Maths notes',
-      description:
-        'Full topic notes finished by a teacher, ready to study from for SPM, IGCSE and A-Level Maths.',
-      price: 55,
-    },
-    {
-      id: 's-notes-lang-secondary',
-      audience: 'students',
-      stage: 'secondary',
-      department: 'language',
-      name: 'Completed Language notes',
-      description:
-        'Full topic notes finished by a teacher for English and other languages at secondary level.',
-      price: 50,
-    },
-    {
-      id: 's-notes-primary',
-      audience: 'students',
-      stage: 'primary',
-      department: 'all',
-      name: 'Completed Primary notes',
-      description:
-        'Full topic notes finished by a teacher, covering all primary subjects.',
-      price: 45,
-    },
-    {
-      id: 's-notes-kinder',
-      audience: 'students',
-      stage: 'kindergarten',
-      department: 'all',
-      name: 'Kindergarten teacher notes',
-      description:
-        'Ready-made early-years notes and activity guides finished by a teacher.',
-      price: 35,
-    },
-  ],
-  emptyNote: 'No products match that choice yet. Try another stage or department.',
+  successTitle: 'Thank you — your collaboration request is ready.',
+  successText:
+    'This is a sample page. With the backend added, this goes straight to the Excel sheet, sorted by years of experience, level of education, subjects and level to teach.',
 }
 
 export const CONTACT = {
@@ -345,22 +336,16 @@ export const CONTACT = {
 
 export const NAV_LINKS = [
   { id: 'profile', label: 'Profile', icon: 'profile' },
-  { id: 'subjects', label: 'What you can study', icon: 'subjects' },
-  { id: 'availability', label: 'Availability', icon: 'calendar' },
   { id: 'feedback', label: 'Feedback', icon: 'feedback' },
-  { id: 'products', label: 'Products', icon: 'products' },
+  { id: 'services', label: 'Products & services', icon: 'products' },
+  { id: 'availability', label: 'Booking calendar', icon: 'calendar' },
   { id: 'collaborate', label: 'Collaborate', icon: 'collaborate' },
-  { id: 'booking', label: 'Book a class', icon: 'book' },
 ]
 
 export const PLACEHOLDER = 'RM -'
 
-export function priceForSubjects(levelId, subjectIds) {
-  const level = LEVELS.find((item) => item.id === levelId)
-  if (!level) return 0
-  const count = level.subjects.filter((subject) =>
-    subjectIds.includes(subject.id),
-  ).length
-  if (count === 0) return 0
-  return OBJECTIVE_PRICE + (count - 1) * COMBO_EXTRA_PRICE
+export function priceForSubjects(count, extraRate) {
+  if (!count || count < 1) return 0
+  const rate = extraRate ?? PRICES.comboExtra
+  return PRICES.single + (count - 1) * rate
 }

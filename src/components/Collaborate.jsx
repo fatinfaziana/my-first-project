@@ -5,11 +5,21 @@ import { useReveal } from '../hooks/useReveal'
 function Collaborate() {
   const bodyRef = useReveal()
   const [name, setName] = useState('')
+  const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
-  const [subjects, setSubjects] = useState('')
-  const [resume, setResume] = useState('')
+  const [levels, setLevels] = useState([])
+  const [subjects, setSubjects] = useState([])
+  const [resumeName, setResumeName] = useState('')
   const [error, setError] = useState('')
   const [submitted, setSubmitted] = useState(false)
+
+  function toggle(list, setList, value) {
+    setList((current) =>
+      current.includes(value)
+        ? current.filter((item) => item !== value)
+        : [...current, value],
+    )
+  }
 
   function submit(event) {
     event.preventDefault()
@@ -17,12 +27,16 @@ function Collaborate() {
       setError('Add your name.')
       return
     }
-    if (!email.trim()) {
-      setError('Add your email or contact.')
+    if (!phone.trim() && !email.trim()) {
+      setError('Add a phone number or an email.')
       return
     }
-    if (!subjects.trim()) {
-      setError('List the subjects you can teach.')
+    if (levels.length < 1) {
+      setError('Pick at least one level to teach.')
+      return
+    }
+    if (subjects.length < 1) {
+      setError('Pick at least one subject to teach.')
       return
     }
     setError('')
@@ -31,9 +45,11 @@ function Collaborate() {
 
   function reset() {
     setName('')
+    setPhone('')
     setEmail('')
-    setSubjects('')
-    setResume('')
+    setLevels([])
+    setSubjects([])
+    setResumeName('')
     setError('')
     setSubmitted(false)
   }
@@ -50,97 +66,139 @@ function Collaborate() {
       <div className="section__body reveal" ref={bodyRef}>
         <p className="section__lead">{COLLABORATE.intro}</p>
 
-        <div className="collaborate">
-          <div className="collaborate__subjects">
-            <h3 className="subheading">{COLLABORATE.subjectsNote}</h3>
-            <ul className="chip-list">
-              {COLLABORATE.subjects.map((subject) => (
-                <li key={subject} className="chip chip--soft">
-                  {subject}
-                </li>
-              ))}
-            </ul>
+        {submitted ? (
+          <div className="booking-success">
+            <p className="booking-success__title">{COLLABORATE.successTitle}</p>
+            <p className="booking-success__text">{COLLABORATE.successText}</p>
+            <div className="booking-success__summary">
+              <p>
+                <span className="summary__label">Name</span>
+                <span className="summary__value">{name}</span>
+              </p>
+              <p>
+                <span className="summary__label">Levels to teach</span>
+                <span className="summary__value">{levels.join(', ')}</span>
+              </p>
+              <p>
+                <span className="summary__label">Subjects</span>
+                <span className="summary__value">{subjects.join(', ')}</span>
+              </p>
+              <p>
+                <span className="summary__label">Resume</span>
+                <span className="summary__value">{resumeName || '—'}</span>
+              </p>
+            </div>
+            <button type="button" className="btn btn--primary" onClick={reset}>
+              Start again
+            </button>
           </div>
+        ) : (
+          <form className="collaborate__form" onSubmit={submit}>
+            <div className="field">
+              <label htmlFor="collab-name">Name</label>
+              <input
+                id="collab-name"
+                type="text"
+                value={name}
+                onChange={(event) => {
+                  setName(event.target.value)
+                  setError('')
+                }}
+              />
+            </div>
+            <div className="field">
+              <label htmlFor="collab-phone">Phone number</label>
+              <input
+                id="collab-phone"
+                type="tel"
+                value={phone}
+                onChange={(event) => {
+                  setPhone(event.target.value)
+                  setError('')
+                }}
+              />
+            </div>
+            <div className="field">
+              <label htmlFor="collab-email">Email</label>
+              <input
+                id="collab-email"
+                type="email"
+                value={email}
+                onChange={(event) => {
+                  setEmail(event.target.value)
+                  setError('')
+                }}
+              />
+            </div>
 
-          <div className="collaborate__form-wrap">
-            {submitted ? (
-              <div className="booking-success">
-                <p className="booking-success__title">
-                  {COLLABORATE.successTitle}
-                </p>
-                <p className="booking-success__text">{COLLABORATE.successText}</p>
-                <div className="booking-success__summary">
-                  <p>
-                    <span className="summary__label">Name</span>
-                    <span className="summary__value">{name}</span>
-                  </p>
-                  <p>
-                    <span className="summary__label">Subjects</span>
-                    <span className="summary__value">{subjects}</span>
-                  </p>
-                </div>
-                <button type="button" className="btn btn--primary" onClick={reset}>
-                  Start again
-                </button>
+            <fieldset className="booking__fieldset">
+              <legend className="booking__legend">Level to teach</legend>
+              <div className="chip-row">
+                {COLLABORATE.levels.map((level) => (
+                  <button
+                    key={level.id}
+                    type="button"
+                    className={`chip chip--button${levels.includes(level.label) ? ' chip--active' : ''}`}
+                    aria-pressed={levels.includes(level.label)}
+                    onClick={() => {
+                      toggle(levels, setLevels, level.label)
+                      setError('')
+                    }}
+                  >
+                    {level.label}
+                  </button>
+                ))}
               </div>
-            ) : (
-              <form className="collaborate__form" onSubmit={submit}>
-                <div className="field">
-                  <label htmlFor="collab-name">Your name</label>
-                  <input
-                    id="collab-name"
-                    type="text"
-                    value={name}
-                    onChange={(event) => {
-                      setName(event.target.value)
+            </fieldset>
+
+            <fieldset className="booking__fieldset">
+              <legend className="booking__legend">Subjects to teach</legend>
+              <div className="chip-row">
+                {COLLABORATE.subjects.map((subject) => (
+                  <button
+                    key={subject}
+                    type="button"
+                    className={`chip chip--button${subjects.includes(subject) ? ' chip--active' : ''}`}
+                    aria-pressed={subjects.includes(subject)}
+                    onClick={() => {
+                      toggle(subjects, setSubjects, subject)
                       setError('')
                     }}
-                  />
-                </div>
-                <div className="field">
-                  <label htmlFor="collab-email">Email or contact</label>
-                  <input
-                    id="collab-email"
-                    type="text"
-                    value={email}
-                    onChange={(event) => {
-                      setEmail(event.target.value)
-                      setError('')
-                    }}
-                  />
-                </div>
-                <div className="field">
-                  <label htmlFor="collab-subjects">Subjects you can teach</label>
-                  <input
-                    id="collab-subjects"
-                    type="text"
-                    placeholder="For example: Physics, Additional Mathematics"
-                    value={subjects}
-                    onChange={(event) => {
-                      setSubjects(event.target.value)
-                      setError('')
-                    }}
-                  />
-                </div>
-                <div className="field">
-                  <label htmlFor="collab-resume">Resume (paste a link or a short summary)</label>
-                  <textarea
-                    id="collab-resume"
-                    rows="3"
-                    value={resume}
-                    onChange={(event) => setResume(event.target.value)}
-                  />
-                </div>
-                <p className="booking__error" role="alert">
-                  {error}
-                </p>
-                <button type="submit" className="btn btn--primary">
-                  Send collaboration request
-                </button>
-              </form>
-            )}
-          </div>
-        </div>
+                  >
+                    {subject}
+                  </button>
+                ))}
+              </div>
+            </fieldset>
+
+            <div className="field">
+              <label htmlFor="collab-resume">Upload resume document</label>
+              <input
+                id="collab-resume"
+                type="file"
+                accept=".pdf,.doc,.docx"
+                onChange={(event) => {
+                  setResumeName(event.target.files?.[0]?.name ?? '')
+                  setError('')
+                }}
+              />
+              {resumeName && (
+                <p className="field__hint">Selected: {resumeName}</p>
+              )}
+              <p className="field__hint">
+                Nothing is uploaded tonight. With the backend added, the file and
+                details go straight to the Excel sheet.
+              </p>
+            </div>
+
+            <p className="booking__error" role="alert">
+              {error}
+            </p>
+            <button type="submit" className="btn btn--primary">
+              Send collaboration request
+            </button>
+          </form>
+        )}
       </div>
     </section>
   )

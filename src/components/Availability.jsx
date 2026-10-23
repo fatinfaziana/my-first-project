@@ -23,7 +23,7 @@ function Availability() {
 
   return (
     <section id="availability" className="section" aria-labelledby="availability-heading">
-      <p className="eyebrow">Availability</p>
+      <p className="eyebrow">Booking calendar</p>
       <h2 id="availability-heading">{AVAILABILITY.heading}</h2>
 
       <div className="section__body reveal" ref={bodyRef}>
@@ -31,25 +31,9 @@ function Availability() {
         <p className="section__lead">{AVAILABILITY.note}</p>
 
         <div className="calendar">
-          <div className="calendar__head">
-            <p className="calendar__month">
-              {calendar.month} {calendar.year}
-            </p>
-            <p className="calendar__legend">
-              <span className="legend__item">
-                <span className="legend__dot legend__dot--free" aria-hidden="true" />
-                {statuses.free}
-              </span>
-              <span className="legend__item">
-                <span className="legend__dot legend__dot--partial" aria-hidden="true" />
-                Partly booked
-              </span>
-              <span className="legend__item">
-                <span className="legend__dot legend__dot--booked" aria-hidden="true" />
-                {statuses.full}
-              </span>
-            </p>
-          </div>
+          <p className="calendar__month">
+            {calendar.month} {calendar.year}
+          </p>
 
           <div className="calendar__weekdays" aria-hidden="true">
             {WEEKDAYS.map((weekday) => (
@@ -62,7 +46,9 @@ function Availability() {
           <div className="calendar__grid">
             {cells.map((date, index) => {
               if (date === null) {
-                return <span key={`empty-${index}`} className="calendar__blank" />
+                return (
+                  <span key={`empty-${index}`} className="calendar__blank" />
+                )
               }
               const isFull = fullDays.has(date)
               const isPartial = partlyDays.has(date)
@@ -71,13 +57,13 @@ function Availability() {
                 <button
                   key={date}
                   type="button"
-                  className={`calendar__day${isFull ? ' calendar__day--full' : ''}${isPartial ? ' calendar__day--partial' : ''}${isSelected ? ' calendar__day--selected' : ''}`}
+                  className={`calendar__day${isFull ? ' calendar__day--full' : ' calendar__day--free'}${isPartial ? ' calendar__day--partial' : ''}${isSelected ? ' calendar__day--selected' : ''}`}
                   aria-pressed={isSelected}
                   disabled={isFull}
                   aria-label={
                     isFull
                       ? `Day ${date}, ${statuses.full}`
-                      : `Day ${date}${isPartial ? ', partly booked' : ', free'}`
+                      : `Day ${date}, free or partly free`
                   }
                   onClick={() => setSelectedDate(isSelected ? null : date)}
                 >
@@ -85,11 +71,6 @@ function Availability() {
                   {isFull && (
                     <span className="calendar__mark calendar__mark--full">
                       {statuses.full}
-                    </span>
-                  )}
-                  {isPartial && !isFull && (
-                    <span className="calendar__mark calendar__mark--partial">
-                      Partly
                     </span>
                   )}
                 </button>
@@ -100,9 +81,7 @@ function Availability() {
           <div className="calendar__detail">
             {selectedDate ? (
               <>
-                <p className="calendar__detail-title">
-                  Day {selectedDate}
-                </p>
+                <p className="calendar__detail-title">Day {selectedDate}</p>
                 {selectedSlots.length > 0 ? (
                   <ul className="row-list">
                     {selectedSlots.map((slot) => (
@@ -121,15 +100,13 @@ function Availability() {
                   </ul>
                 ) : (
                   <p className="calendar__hint">
-                    This day is {statuses.open.toLowerCase()} — a free class slot is
-                    available. Pick it in the booking form below.
+                    This day is free. Pick it in the booking steps above.
                   </p>
                 )}
               </>
             ) : (
               <p className="calendar__hint">
-                Pick a free day to see its slots. Fully booked days are shaded and
-                cannot be picked.
+                Pick a green day to see its times. Red days are fully booked.
               </p>
             )}
           </div>

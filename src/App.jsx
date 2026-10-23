@@ -1,12 +1,10 @@
 import Sidebar from './components/Header'
 import Hero from './components/Hero'
 import Profile from './components/Profile'
-import SubjectsPricing from './components/SubjectsPricing'
-import Availability from './components/Availability'
 import Feedback from './components/Feedback'
-import ProductShowcase from './components/ProductShowcase'
+import ProductsServices from './components/ProductsServices'
+import Availability from './components/Availability'
 import Collaborate from './components/Collaborate'
-import BookingFlow from './components/BookingFlow'
 import Footer from './components/Footer'
 import './App.css'
 
@@ -18,12 +16,10 @@ function App() {
         <main>
           <Hero />
           <Profile />
-          <SubjectsPricing />
-          <Availability />
           <Feedback />
-          <ProductShowcase />
+          <ProductsServices />
+          <Availability />
           <Collaborate />
-          <BookingFlow />
         </main>
         <Footer />
       </div>

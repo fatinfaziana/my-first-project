@@ -405,6 +405,29 @@
   border: 1px solid #b98f89;
 }
 
+/* Calendar day states: green = pickable, red = fully booked */
+.calendar__day--free {
+  background: #eaf6d6;
+  border-color: #cfe9a4;
+}
+
+.calendar__day--partial {
+  background: #e3f2d3;
+  border-color: #b8dd8a;
+}
+
+.calendar__day--free:not(:disabled):hover,
+.calendar__day--partial:not(:disabled):hover {
+  border-color: var(--ink);
+}
+
+.calendar__day--full {
+  background: #f4c9c2;
+  border-color: #e0a49a;
+  color: #8a3b2c;
+  cursor: not-allowed;
+}
+
 .calendar__weekdays,
 .calendar__grid {
   display: grid;
@@ -442,18 +465,6 @@
   transition: border-color 0.2s ease, background 0.2s ease;
 }
 
-.calendar__day--partial {
-  border-color: #e5a878;
-  background: #fdeede;
-}
-
-.calendar__day--full {
-  background: #eee2e0;
-  border-color: #d8b7b2;
-  color: #8a645e;
-  cursor: not-allowed;
-}
-
 .calendar__day:disabled {
   opacity: 1;
 }
@@ -482,12 +493,12 @@
 }
 
 .calendar__mark--full {
-  color: #8a645e;
+  color: #8a3b2c;
   font-weight: 700;
 }
 
 .calendar__mark--partial {
-  color: #a5622a;
+  color: #4a7c1a;
   font-weight: 600;
 }
 
@@ -1231,4 +1242,123 @@
   .calendar__mark {
     font-size: 0.5rem;
   }
+}
+/* Package choice buttons (most popular / best price) */
+.package-choice {
+  text-align: left;
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 18px;
+  padding: 20px;
+  font: inherit;
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.package-choice--popular {
+  border-color: var(--action);
+}
+
+.package-choice--selected {
+  border-color: var(--ink);
+  background: rgba(200, 241, 105, 0.18);
+}
+
+.package-choice .tag--action {
+  align-self: flex-start;
+}
+
+.package-choice__name {
+  font-weight: 700;
+  font-size: 1.0625rem;
+}
+
+.package-choice__includes {
+  color: var(--grey);
+  font-size: 0.9375rem;
+}
+
+.package-choice__price {
+  font-weight: 700;
+  font-size: 1.375rem;
+  margin-top: auto;
+}
+
+/* Teacher service note */
+.teacher-note {
+  margin-top: 24px;
+  padding: 20px;
+  border-radius: 18px;
+  background: #eae8f7;
+  display: grid;
+  gap: 12px;
+}
+
+.teacher-note p {
+  margin: 0;
+  color: var(--grey);
+}
+
+.teacher-note .tag--action {
+  justify-self: start;
+}
+
+/* Feedback photos and reward */
+.feedback__reward {
+  margin: 8px 0 0;
+}
+
+.feedback-card__photos {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar--mint {
+  background: #eaf6d6;
+  color: #4a7c1a;
+}
+
+.avatar--sky {
+  background: #e3eefb;
+  color: #2f5b8f;
+}
+
+.avatar--peach {
+  background: #fbe3d2;
+  color: #a5622a;
+}
+
+.feedback__note {
+  color: var(--grey);
+  font-size: 0.9375rem;
+  margin-top: 20px;
+}
+
+/* Field hint */
+.field__hint {
+  color: var(--grey);
+  font-size: 0.8125rem;
+  margin: 6px 0 0;
+}
+
+/* Price note */
+.price-note {
+  color: var(--grey);
+  font-size: 0.875rem;
+  margin-top: 28px;
+  max-width: 70ch;
 }
