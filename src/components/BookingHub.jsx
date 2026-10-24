@@ -9,10 +9,10 @@ function BookingHub() {
       aria-labelledby="booking-hub-heading"
     >
       <p className="eyebrow">Booking</p>
-      <h2 id="booking-hub-heading">Booking calendar &amp; book a class</h2>
+      <h2 id="booking-hub-heading">Bookings</h2>
       <p className="section__lead">
-        See which days are free, then book your class in the same place — no
-        going back and forth.
+        See which days are free in any month, then book your class in the same
+        place — no going back and forth.
       </p>
 
       <div className="booking-hub__grid">

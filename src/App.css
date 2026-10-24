@@ -406,25 +406,25 @@
 }
 
 /* Calendar day states on the surface: green free, yellow partly, red full */
-.calendar__day--free {
+.calendar__grid .calendar__day--free {
   background: #7dc242;
   border-color: #6aae33;
   color: #ffffff;
 }
 
-.calendar__day--partial {
+.calendar__grid .calendar__day--partial {
   background: #f2c94c;
   border-color: #d9ad2c;
   color: #4a3800;
 }
 
-.calendar__day--free:not(:disabled):hover,
-.calendar__day--partial:not(:disabled):hover {
+.calendar__grid .calendar__day--free:not(:disabled):hover,
+.calendar__grid .calendar__day--partial:not(:disabled):hover {
   border-color: var(--ink);
   filter: brightness(0.95);
 }
 
-.calendar__day--full {
+.calendar__grid .calendar__day--full {
   background: #d94b3d;
   border-color: #b93a2e;
   color: #ffffff;
@@ -1589,4 +1589,25 @@
 
 .calendar__legend-row {
   margin-top: 4px;
+}
+
+/* Month tabs and multi-month calendar */
+.month-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.calendar-month__label {
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+
+.calendar-month {
+  margin-top: 8px;
+}
+
+.booking-hub__panel .calendar {
+  max-width: none;
 }

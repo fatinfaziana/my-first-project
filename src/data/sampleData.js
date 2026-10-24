@@ -224,9 +224,9 @@ export const PRODUCTS = {
 }
 
 export const AVAILABILITY = {
-  heading: 'Booking calendar',
+  heading: 'Bookings',
   freeTrialChip: 'Free trial class available',
-  note: 'Colours show at a glance before you click: green is a fully free day, yellow is partly booked, red is fully booked.',
+  note: 'Colours show at a glance before you click: green is a fully free day, yellow is partly booked, red is fully booked. Pick a date in any month to book ahead.',
   statuses: {
     free: 'Free',
     partial: 'Partly booked',
@@ -235,41 +235,35 @@ export const AVAILABILITY = {
     booked: 'Booked',
   },
   allTimes: ['10:00 AM', '2:00 PM', '5:00 PM', '7:30 PM'],
-  calendar: {
-    month: 'Sample Month',
-    year: 2026,
-    firstWeekday: 3,
-    dayCount: 31,
-    fullyBooked: [4, 5, 12, 18, 19, 20, 25, 26],
-    partlyBooked: [3, 6, 10, 13, 17, 24, 27],
-    daySlots: {
-      3: [
-        { time: '7:30 PM', mode: 'Online', status: 'free' },
-        { time: '5:00 PM', mode: 'In person', status: 'booked' },
-      ],
-      6: [
-        { time: '10:00 AM', mode: 'In person', status: 'booked' },
-        { time: '2:00 PM', mode: 'Online', status: 'free' },
-      ],
-      10: [
-        { time: '7:30 PM', mode: 'Online', status: 'booked' },
-        { time: '8:30 PM', mode: 'Online', status: 'free' },
-      ],
-      13: [
-        { time: '10:00 AM', mode: 'In person', status: 'free' },
-        { time: '2:00 PM', mode: 'Online', status: 'booked' },
-      ],
-      17: [
-        { time: '5:00 PM', mode: 'In person', status: 'booked' },
-        { time: '7:30 PM', mode: 'Online', status: 'free' },
-      ],
-      24: [{ time: '7:30 PM', mode: 'Online', status: 'booked' }],
-      27: [
-        { time: '10:00 AM', mode: 'In person', status: 'free' },
-        { time: '2:00 PM', mode: 'Online', status: 'free' },
-      ],
+  months: [
+    {
+      id: 'month-1',
+      label: 'Sample Month',
+      year: 2026,
+      firstWeekday: 3,
+      dayCount: 31,
+      fullyBooked: [4, 5, 12, 18, 19, 20, 25, 26],
+      partlyBooked: [3, 6, 10, 13, 17, 24, 27],
     },
-  },
+    {
+      id: 'month-2',
+      label: 'Next Month',
+      year: 2026,
+      firstWeekday: 6,
+      dayCount: 30,
+      fullyBooked: [7, 8, 14, 21, 22, 28],
+      partlyBooked: [2, 9, 15, 16, 23, 29],
+    },
+    {
+      id: 'month-3',
+      label: 'Month After',
+      year: 2026,
+      firstWeekday: 1,
+      dayCount: 31,
+      fullyBooked: [3, 10, 11, 17, 24, 31],
+      partlyBooked: [4, 5, 12, 18, 19, 25, 26],
+    },
+  ],
 }
 
 /* Combo packages, prioritising the most popular and best price. */
@@ -389,7 +383,7 @@ export const NAV_LINKS = [
   { id: 'profile', label: 'Profile', icon: 'profile' },
   { id: 'feedback', label: 'Feedback', icon: 'feedback' },
   { id: 'subjects', label: 'Subjects offered', icon: 'subjects' },
-  { id: 'booking', label: 'Booking & book a class', icon: 'calendar' },
+  { id: 'booking', label: 'Bookings', icon: 'calendar' },
   { id: 'products', label: 'Products', icon: 'products' },
   { id: 'collaborate', label: 'Collaborate', icon: 'collaborate' },
   { id: 'contact', label: 'Contact', icon: 'profile' },
