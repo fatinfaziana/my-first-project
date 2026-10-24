@@ -405,7 +405,7 @@
   border: 1px solid #b98f89;
 }
 
-/* Calendar day states: whole cell green = pickable, whole cell red = fully booked */
+/* Calendar day states on the surface: green free, yellow partly, red full */
 .calendar__day--free {
   background: #7dc242;
   border-color: #6aae33;
@@ -413,9 +413,9 @@
 }
 
 .calendar__day--partial {
-  background: #8fd14f;
-  border-color: #6aae33;
-  color: #ffffff;
+  background: #f2c94c;
+  border-color: #d9ad2c;
+  color: #4a3800;
 }
 
 .calendar__day--free:not(:disabled):hover,
@@ -429,6 +429,46 @@
   border-color: #b93a2e;
   color: #ffffff;
   cursor: not-allowed;
+}
+
+.calendar__tag {
+  font-size: 0.5625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.calendar__day--partial .calendar__tag {
+  color: #5c4700;
+}
+
+.calendar__legend-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 14px;
+  color: var(--grey);
+  font-size: 0.875rem;
+}
+
+.legend__swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.legend__swatch--free {
+  background: #7dc242;
+}
+
+.legend__swatch--partial {
+  background: #f2c94c;
+}
+
+.legend__swatch--full {
+  background: #d94b3d;
 }
 
 .calendar__weekdays,
@@ -1525,4 +1565,28 @@
   color: var(--grey);
   font-size: 0.875rem;
   margin: 12px 0 0;
+}
+
+/* Booking hub: calendar and booking side by side */
+.booking-hub__grid {
+  display: grid;
+  gap: 32px;
+  margin-top: 24px;
+  align-items: start;
+}
+
+.booking-hub__panel-title {
+  font-size: 1.125rem;
+  margin: 0 0 12px;
+}
+
+@media (min-width: 900px) {
+  .booking-hub__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+.calendar__legend-row {
+  margin-top: 4px;
 }

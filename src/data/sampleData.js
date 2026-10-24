@@ -226,14 +226,15 @@ export const PRODUCTS = {
 export const AVAILABILITY = {
   heading: 'Booking calendar',
   freeTrialChip: 'Free trial class available',
-  note: 'Green days are free or partly free and can be picked. Red days are fully booked and cannot be picked.',
+  note: 'Colours show at a glance before you click: green is a fully free day, yellow is partly booked, red is fully booked.',
   statuses: {
     free: 'Free',
-    partial: 'Partly free',
-    full: 'FULLY BOOKED',
+    partial: 'Partly booked',
+    full: 'Fully booked',
     open: 'Free',
     booked: 'Booked',
   },
+  allTimes: ['10:00 AM', '2:00 PM', '5:00 PM', '7:30 PM'],
   calendar: {
     month: 'Sample Month',
     year: 2026,
@@ -387,9 +388,8 @@ export const CONTACT = {
 export const NAV_LINKS = [
   { id: 'profile', label: 'Profile', icon: 'profile' },
   { id: 'feedback', label: 'Feedback', icon: 'feedback' },
-  { id: 'availability', label: 'Booking calendar', icon: 'calendar' },
   { id: 'subjects', label: 'Subjects offered', icon: 'subjects' },
-  { id: 'booking', label: 'Book a class', icon: 'book' },
+  { id: 'booking', label: 'Booking & book a class', icon: 'calendar' },
   { id: 'products', label: 'Products', icon: 'products' },
   { id: 'collaborate', label: 'Collaborate', icon: 'collaborate' },
   { id: 'contact', label: 'Contact', icon: 'profile' },

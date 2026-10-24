@@ -106,9 +106,8 @@ function BookClass() {
   }
 
   return (
-    <section id="booking" className="section" aria-labelledby="booking-heading">
-      <p className="eyebrow">Book</p>
-      <h2 id="booking-heading">Book a class</h2>
+    <div className="booking-hub__panel">
+      <h3 className="booking-hub__panel-title">Book a class</h3>
       <p className="section__lead">
         Five short steps. Nothing is sent or saved on this sample page.
       </p>
@@ -390,7 +389,7 @@ function BookClass() {
           </>
         )}
       </div>
-    </section>
+    </div>
   )
 }
 

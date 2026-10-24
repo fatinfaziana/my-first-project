@@ -2,9 +2,8 @@ import Sidebar from './components/Header'
 import Hero from './components/Hero'
 import Profile from './components/Profile'
 import Feedback from './components/Feedback'
-import Availability from './components/Availability'
 import SubjectsOffered from './components/SubjectsOffered'
-import BookClass from './components/BookClass'
+import BookingHub from './components/BookingHub'
 import Products from './components/Products'
 import Collaborate from './components/Collaborate'
 import Footer from './components/Footer'
@@ -19,9 +18,8 @@ function App() {
           <Hero />
           <Profile />
           <Feedback />
-          <Availability />
           <SubjectsOffered />
-          <BookClass />
+          <BookingHub />
           <Products />
           <Collaborate />
         </main>
