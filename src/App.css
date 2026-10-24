@@ -405,42 +405,45 @@
   border: 1px solid #b98f89;
 }
 
-/* Calendar day states on the surface: green free, yellow partly, red full */
+/* Calendar day states on the surface: soft green free, soft yellow partly, soft red full */
 .calendar__grid .calendar__day--free {
-  background: #7dc242;
-  border-color: #6aae33;
-  color: #ffffff;
+  background: #e4f4cf;
+  border-color: #c7e6a0;
+  color: #38561a;
 }
 
 .calendar__grid .calendar__day--partial {
-  background: #f2c94c;
-  border-color: #d9ad2c;
-  color: #4a3800;
+  background: #fdf1cd;
+  border-color: #f0dd9a;
+  color: #6b5200;
 }
 
 .calendar__grid .calendar__day--free:not(:disabled):hover,
 .calendar__grid .calendar__day--partial:not(:disabled):hover {
   border-color: var(--ink);
-  filter: brightness(0.95);
 }
 
 .calendar__grid .calendar__day--full {
-  background: #d94b3d;
-  border-color: #b93a2e;
-  color: #ffffff;
+  background: #fadcd8;
+  border-color: #f0bcb5;
+  color: #8a3b2c;
   cursor: not-allowed;
 }
 
 .calendar__tag {
   font-size: 0.5625rem;
-  font-weight: 700;
-  text-transform: uppercase;
+  font-weight: 500;
   letter-spacing: 0.02em;
   line-height: 1;
 }
 
 .calendar__day--partial .calendar__tag {
-  color: #5c4700;
+  color: #6b5200;
+}
+
+.calendar__day--full .calendar__tag {
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .calendar__legend-row {
@@ -460,15 +463,18 @@
 }
 
 .legend__swatch--free {
-  background: #7dc242;
+  background: #e4f4cf;
+  border: 1px solid #c7e6a0;
 }
 
 .legend__swatch--partial {
-  background: #f2c94c;
+  background: #fdf1cd;
+  border: 1px solid #f0dd9a;
 }
 
 .legend__swatch--full {
-  background: #d94b3d;
+  background: #fadcd8;
+  border: 1px solid #f0bcb5;
 }
 
 .calendar__weekdays,
@@ -1610,4 +1616,55 @@
 
 .booking-hub__panel .calendar {
   max-width: none;
+}
+
+/* Month navigation arrows */
+.month-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.month-nav__label {
+  font-weight: 600;
+  font-size: 1.0625rem;
+  min-width: 0;
+}
+
+.month-nav__btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid var(--hairline);
+  background: #ffffff;
+  color: var(--ink);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.month-nav__btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.month-nav__btn:not(:disabled):hover {
+  border-color: var(--ink);
+}
+
+/* Subject grouping labels */
+.subject-group__label,
+.subject-pick-group__label {
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin: 14px 0 6px;
+  color: var(--ink);
+}
+
+.subject-pick-group {
+  margin-bottom: 10px;
 }

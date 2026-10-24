@@ -39,6 +39,24 @@ export function subjectPriceFor(basePrice, classType, mode, isCombo) {
   return Math.round(basePrice * classFactor * modeFactor * comboFactor)
 }
 
+/* Trial class: pick up to 3 subjects, RM 10 each. */
+export const TRIAL = {
+  id: 'trial',
+  label: 'Free trial class',
+  pricePerClass: 10,
+  maxSubjects: 3,
+  blurb: 'Try up to 3 subjects for RM 10 each. See availability, then book.',
+}
+
+export function allSubjectsFor(stage, syllabus) {
+  const stageData = SUBJECT_CATALOGUE.find((item) => item.id === stage)
+  const syll = stageData?.syllabuses[syllabus]
+  if (!syll) return []
+  return syll.groups.flatMap((group) =>
+    group.subjects.map((subject) => ({ ...subject, group: group.label })),
+  )
+}
+
 export const PROFILE = {
   heading: 'About the tuition service',
   name: 'The tutor',
@@ -68,24 +86,60 @@ export const SUBJECT_CATALOGUE = [
     syllabuses: {
       national: {
         label: 'National',
-        subjects: [
-          { name: 'Early Literacy (Bahasa Melayu)', price: 40 },
-          { name: 'Early Literacy (English)', price: 45 },
-          { name: 'Early Numeracy', price: 45 },
-          { name: 'Islamic / Moral Education', price: 35 },
-          { name: 'Art and Craft', price: 35 },
-          { name: 'Music and Movement', price: 35 },
+        groups: [
+          {
+            id: 'bahasa',
+            label: 'Bahasa',
+            subjects: [
+              { name: 'Awal Literasi (Bahasa Melayu)', price: 40 },
+              { name: 'Awal Literasi (English)', price: 45 },
+            ],
+          },
+          {
+            id: 'matematik',
+            label: 'Matematik',
+            subjects: [{ name: 'Awal Numerasi', price: 45 }],
+          },
+          {
+            id: 'moral',
+            label: 'Agama & Moral',
+            subjects: [{ name: 'Pendidikan Islam / Moral', price: 35 }],
+          },
+          {
+            id: 'lain',
+            label: 'Lain-lain',
+            subjects: [
+              { name: 'Seni dan Kraf', price: 35 },
+              { name: 'Muzik dan Pergerakan', price: 35 },
+            ],
+          },
         ],
       },
       international: {
         label: 'International',
-        subjects: [
-          { name: 'Phonics and Reading', price: 50 },
-          { name: 'Early English', price: 50 },
-          { name: 'Early Mathematics', price: 50 },
-          { name: 'Discovery of the World', price: 40 },
-          { name: 'Creative Arts', price: 40 },
-          { name: 'Physical Play', price: 35 },
+        groups: [
+          {
+            id: 'language',
+            label: 'Language',
+            subjects: [
+              { name: 'Phonics and Reading', price: 50 },
+              { name: 'Early English', price: 50 },
+            ],
+          },
+          {
+            id: 'maths',
+            label: 'Mathematics',
+            subjects: [{ name: 'Early Mathematics', price: 50 }],
+          },
+          {
+            id: 'others',
+            label: 'Others',
+            subjects: [
+              { name: 'Discovery of the World', price: 40 },
+              { name: 'Creative Arts', price: 40 },
+              { name: 'Physical Play', price: 35 },
+            ],
+          },
         ],
       },
     },
@@ -97,24 +151,68 @@ export const SUBJECT_CATALOGUE = [
     syllabuses: {
       national: {
         label: 'National',
-        subjects: [
-          { name: 'Bahasa Melayu', price: 50 },
-          { name: 'English', price: 55 },
-          { name: 'Mathematics', price: 60 },
-          { name: 'Science', price: 60 },
-          { name: 'Sejarah (History)', price: 50 },
-          { name: 'Pendidikan Islam / Moral', price: 45 },
+        groups: [
+          {
+            id: 'sains',
+            label: 'Sains',
+            subjects: [{ name: 'Sains', price: 60 }],
+          },
+          {
+            id: 'matematik',
+            label: 'Matematik',
+            subjects: [{ name: 'Matematik', price: 60 }],
+          },
+          {
+            id: 'bahasa',
+            label: 'Bahasa',
+            subjects: [
+              { name: 'Bahasa Melayu', price: 50 },
+              { name: 'English', price: 55 },
+            ],
+          },
+          {
+            id: 'sejarah',
+            label: 'Sejarah',
+            subjects: [{ name: 'Sejarah', price: 50 }],
+          },
+          {
+            id: 'moral',
+            label: 'Agama & Moral',
+            subjects: [{ name: 'Pendidikan Islam / Moral', price: 45 }],
+          },
         ],
       },
       international: {
         label: 'International',
-        subjects: [
-          { name: 'English', price: 60 },
-          { name: 'Mathematics', price: 65 },
-          { name: 'Science', price: 65 },
-          { name: 'Global Perspectives', price: 55 },
-          { name: 'Information and Communication Technology', price: 60 },
-          { name: 'Art and Design', price: 50 },
+        groups: [
+          {
+            id: 'science',
+            label: 'Science',
+            subjects: [{ name: 'Science', price: 65 }],
+          },
+          {
+            id: 'maths',
+            label: 'Mathematics',
+            subjects: [{ name: 'Mathematics', price: 65 }],
+          },
+          {
+            id: 'language',
+            label: 'Language',
+            subjects: [{ name: 'English', price: 60 }],
+          },
+          {
+            id: 'humanities',
+            label: 'Humanities & Global',
+            subjects: [{ name: 'Global Perspectives', price: 55 }],
+          },
+          {
+            id: 'others',
+            label: 'Others',
+            subjects: [
+              { name: 'Information and Communication Technology', price: 60 },
+              { name: 'Art and Design', price: 50 },
+            ],
+          },
         ],
       },
     },
@@ -126,32 +224,116 @@ export const SUBJECT_CATALOGUE = [
     syllabuses: {
       national: {
         label: 'National',
-        subjects: [
-          { name: 'Bahasa Melayu', price: 55 },
-          { name: 'English', price: 60 },
-          { name: 'Mathematics', price: 70 },
-          { name: 'Additional Mathematics', price: 80 },
-          { name: 'Physics', price: 75 },
-          { name: 'Chemistry', price: 75 },
-          { name: 'Biology', price: 70 },
-          { name: 'Sejarah (History)', price: 55 },
-          { name: 'Pendidikan Islam / Moral', price: 50 },
-          { name: 'Prinsip Perakaunan', price: 65 },
+        groups: [
+          {
+            id: 'sains',
+            label: 'Sains',
+            subjects: [
+              { name: 'Fizik', price: 75 },
+              { name: 'Kimia', price: 75 },
+              { name: 'Biologi', price: 70 },
+            ],
+          },
+          {
+            id: 'matematik',
+            label: 'Matematik',
+            subjects: [
+              { name: 'Matematik', price: 70 },
+              { name: 'Matematik Tambahan', price: 80 },
+            ],
+          },
+          {
+            id: 'bahasa',
+            label: 'Bahasa',
+            subjects: [
+              { name: 'Bahasa Melayu', price: 55 },
+              { name: 'English', price: 60 },
+              { name: 'Bahasa Cina', price: 60 },
+            ],
+          },
+          {
+            id: 'perniagaan',
+            label: 'Perdagangan',
+            subjects: [
+              { name: 'Prinsip Perakaunan', price: 65 },
+              { name: 'Perniagaan', price: 60 },
+              { name: 'Ekonomi', price: 65 },
+            ],
+          },
+          {
+            id: 'moral',
+            label: 'Agama & Moral',
+            subjects: [
+              { name: 'Pendidikan Islam', price: 50 },
+              { name: 'Al-Quran dan Sunnah', price: 50 },
+            ],
+          },
+          {
+            id: 'sejarah',
+            label: 'Sejarah',
+            subjects: [{ name: 'Sejarah', price: 55 }],
+          },
+          {
+            id: 'lain',
+            label: 'Lain-lain',
+            subjects: [
+              { name: 'Sains Komputer', price: 85 },
+              { name: 'Pendidikan Seni Visual', price: 50 },
+            ],
+          },
         ],
       },
       international: {
         label: 'International',
-        subjects: [
-          { name: 'English Language', price: 65 },
-          { name: 'Mathematics', price: 75 },
-          { name: 'Further Mathematics', price: 90 },
-          { name: 'Physics', price: 85 },
-          { name: 'Chemistry', price: 85 },
-          { name: 'Biology', price: 80 },
-          { name: 'Economics', price: 75 },
-          { name: 'Business Studies', price: 70 },
-          { name: 'Computer Science', price: 85 },
-          { name: 'Accounting', price: 70 },
+        groups: [
+          {
+            id: 'science',
+            label: 'Science',
+            subjects: [
+              { name: 'Physics', price: 85 },
+              { name: 'Chemistry', price: 85 },
+              { name: 'Biology', price: 80 },
+            ],
+          },
+          {
+            id: 'maths',
+            label: 'Mathematics',
+            subjects: [
+              { name: 'Mathematics', price: 75 },
+              { name: 'Further Mathematics', price: 90 },
+            ],
+          },
+          {
+            id: 'language',
+            label: 'Language',
+            subjects: [
+              { name: 'English Language', price: 65 },
+              { name: 'Chinese', price: 70 },
+            ],
+          },
+          {
+            id: 'commerce',
+            label: 'Commerce',
+            subjects: [
+              { name: 'Accounting', price: 70 },
+              { name: 'Business Studies', price: 70 },
+              { name: 'Economics', price: 75 },
+            ],
+          },
+          {
+            id: 'humanities',
+            label: 'Humanities',
+            subjects: [{ name: 'History', price: 55 }],
+          },
+          {
+            id: 'others',
+            label: 'Others',
+            subjects: [
+              { name: 'Computer Science', price: 85 },
+              { name: 'Art and Design', price: 50 },
+              { name: 'Global Perspectives', price: 55 },
+            ],
+          },
         ],
       },
     },

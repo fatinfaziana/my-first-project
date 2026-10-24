@@ -14,10 +14,10 @@ function Hero() {
         </h2>
         <p className="hero__trial">{FREE_TRIAL_LINE}</p>
         <div className="hero__actions">
-          <a className="btn btn--primary" href="#subjects">
-            Send an enquiry
+          <a className="btn btn--primary" href="#booking">
+            Book a class
           </a>
-          <a className="link-secondary" href="#availability">
+          <a className="link-secondary" href="#booking">
             See availability
           </a>
         </div>

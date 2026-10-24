@@ -43,8 +43,6 @@ function MonthGrid({ month, statuses }) {
 
   return (
     <div className="calendar-month">
-      <p className="calendar-month__label">{month.label}</p>
-
       <div className="calendar__weekdays" aria-hidden="true">
         {WEEKDAYS.map((weekday) => (
           <span key={weekday} className="calendar__weekday">
@@ -138,10 +136,31 @@ function Availability() {
     <div className="booking-hub__panel">
       <h3 className="booking-hub__panel-title">{AVAILABILITY.heading}</h3>
       <div className="reveal" ref={bodyRef}>
-        <p className="tag tag--action availability__chip">
-          {AVAILABILITY.freeTrialChip}
-        </p>
-        <p className="section__lead">{AVAILABILITY.note}</p>
+        <div className="month-nav">
+          <button
+            type="button"
+            className="month-nav__btn"
+            aria-label="Previous month"
+            disabled={monthIndex === 0}
+            onClick={() => setMonthIndex((index) => Math.max(0, index - 1))}
+          >
+            ‹
+          </button>
+          <span className="month-nav__label">
+            {month.label} {month.year}
+          </span>
+          <button
+            type="button"
+            className="month-nav__btn"
+            aria-label="Next month"
+            disabled={monthIndex === months.length - 1}
+            onClick={() =>
+              setMonthIndex((index) => Math.min(months.length - 1, index + 1))
+            }
+          >
+            ›
+          </button>
+        </div>
 
         <div className="calendar__legend-row">
           <span className="legend__item">
@@ -158,25 +177,7 @@ function Availability() {
           </span>
         </div>
 
-        <div className="month-tabs" role="tablist" aria-label="Choose a month">
-          {months.map((item, index) => (
-            <button
-              key={item.id}
-              type="button"
-              role="tab"
-              aria-selected={monthIndex === index}
-              className={`chip chip--button${monthIndex === index ? ' chip--active' : ''}`}
-              onClick={() => setMonthIndex(index)}
-            >
-              {item.label} {item.year}
-            </button>
-          ))}
-        </div>
-
         <div className="calendar">
-          <p className="calendar__month">
-            {month.label} {month.year}
-          </p>
           <MonthGrid month={month} statuses={statuses} />
         </div>
       </div>

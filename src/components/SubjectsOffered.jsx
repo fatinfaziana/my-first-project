@@ -59,19 +59,24 @@ function SubjectsOffered() {
               {Object.entries(stage.syllabuses).map(([key, syllabus]) => (
                 <div key={key} className="syllabus-block">
                   <p className="syllabus-block__label">{syllabus.label}</p>
-                  <ul className="row-list">
-                    {syllabus.subjects.map((subject) => {
-                      const { low, high } = rangeFor(subject.price)
-                      return (
-                        <li key={subject.name} className="row">
-                          <span className="row__title">{subject.name}</span>
-                          <span className="row__amount nums">
-                            RM {low}–{high}
-                          </span>
-                        </li>
-                      )
-                    })}
-                  </ul>
+                  {syllabus.groups.map((group) => (
+                    <div key={group.id} className="subject-group">
+                      <p className="subject-group__label">{group.label}</p>
+                      <ul className="row-list">
+                        {group.subjects.map((subject) => {
+                          const { low, high } = rangeFor(subject.price)
+                          return (
+                            <li key={subject.name} className="row">
+                              <span className="row__title">{subject.name}</span>
+                              <span className="row__amount nums">
+                                RM {low}–{high}
+                              </span>
+                            </li>
+                          )
+                        })}
+                      </ul>
+                    </div>
+                  ))}
                 </div>
               ))}
             </div>

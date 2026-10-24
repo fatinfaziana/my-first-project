@@ -1,5 +1,6 @@
 import Availability from './Availability'
 import BookClass from './BookClass'
+import { AVAILABILITY } from '../data/sampleData'
 
 function BookingHub() {
   return (
@@ -10,9 +11,12 @@ function BookingHub() {
     >
       <p className="eyebrow">Booking</p>
       <h2 id="booking-hub-heading">Bookings</h2>
+      <p className="tag tag--action availability__chip">
+        {AVAILABILITY.freeTrialChip}
+      </p>
       <p className="section__lead">
-        See which days are free in any month, then book your class in the same
-        place — no going back and forth.
+        Free trial class: pick up to 3 subjects for RM 10 each. See which days
+        are free, then book in the same place — no going back and forth.
       </p>
 
       <div className="booking-hub__grid">

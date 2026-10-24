@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import {
-  AVAILABILITY,
   CLASS_TYPES,
   MODES,
   PACKAGES,
   SUBJECT_CATALOGUE,
+  TRIAL,
+  allSubjectsFor,
   subjectPriceFor,
 } from '../data/sampleData'
 import { useReveal } from '../hooks/useReveal'
@@ -34,25 +35,34 @@ function BookClass() {
   const [submitted, setSubmitted] = useState(false)
 
   const stageData = SUBJECT_CATALOGUE.find((item) => item.id === stage)
-  const subjectList = stageData?.syllabuses[syllabus]?.subjects ?? []
+  const syllabusData = stageData?.syllabuses[syllabus]
+  const subjectList = allSubjectsFor(stage, syllabus)
   const chosenSubjects = subjectList.filter((subject) =>
     subjectNames.includes(subject.name),
   )
   const chosenPackage = PACKAGES.find((item) => item.id === packageId)
+  const isTrial = packageId === TRIAL.id
   const isCombo = chosenPackage ? chosenPackage.id !== 'single' : false
 
-  const price = chosenSubjects.reduce(
+  const price = isTrial
+    ? chosenSubjects.length * TRIAL.pricePerClass
+    : chosenSubjects.reduce(
     (total, subject) =>
       total + subjectPriceFor(subject.price, classType, mode, isCombo),
     0,
   )
 
   function toggleSubject(subjectName) {
-    setSubjectNames((current) =>
-      current.includes(subjectName)
-        ? current.filter((item) => item !== subjectName)
-        : [...current, subjectName],
-    )
+    setSubjectNames((current) => {
+      if (current.includes(subjectName)) {
+        return current.filter((item) => item !== subjectName)
+      }
+      if (isTrial && current.length >= TRIAL.maxSubjects) {
+        setError(`Trial class allows up to ${TRIAL.maxSubjects} subjects.`)
+        return current
+      }
+      return [...current, subjectName]
+    })
   }
 
   function goNext() {
@@ -135,7 +145,9 @@ function BookClass() {
               <p>
                 <span className="summary__label">Class type</span>
                 <span className="summary__value">
-                  {CLASS_TYPES[classType].label} · {MODES[mode].label}
+                  {isTrial
+                    ? 'Trial'
+                    : `${CLASS_TYPES[classType].label} · ${MODES[mode].label}`}
                 </span>
               </p>
               <p>
@@ -214,23 +226,29 @@ function BookClass() {
               <fieldset className="booking__fieldset">
                 <legend className="booking__legend">
                   Which subjects? Pick one or more.
+                  {isTrial && ` Up to ${TRIAL.maxSubjects} for the trial class.`}
                 </legend>
-                <div className="chip-row">
-                  {subjectList.map((subject) => (
-                    <button
-                      key={subject.name}
-                      type="button"
-                      className={`chip chip--button${subjectNames.includes(subject.name) ? ' chip--active' : ''}`}
-                      aria-pressed={subjectNames.includes(subject.name)}
-                      onClick={() => {
-                        toggleSubject(subject.name)
-                        setError('')
-                      }}
-                    >
-                      {subject.name}
-                    </button>
-                  ))}
-                </div>
+                {syllabusData?.groups.map((group) => (
+                  <div key={group.id} className="subject-pick-group">
+                    <p className="subject-pick-group__label">{group.label}</p>
+                    <div className="chip-row">
+                      {group.subjects.map((subject) => (
+                        <button
+                          key={subject.name}
+                          type="button"
+                          className={`chip chip--button${subjectNames.includes(subject.name) ? ' chip--active' : ''}`}
+                          aria-pressed={subjectNames.includes(subject.name)}
+                          onClick={() => {
+                            toggleSubject(subject.name)
+                            setError('')
+                          }}
+                        >
+                          {subject.name}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                ))}
               </fieldset>
             )}
 
@@ -282,6 +300,22 @@ function BookClass() {
               <div className="booking__fieldset">
                 <p className="booking__legend">Choose your package</p>
                 <div className="cards-grid cards-grid--packages">
+                  <button
+                    type="button"
+                    className={`package-choice package-choice--trial${packageId === TRIAL.id ? ' package-choice--selected' : ''}`}
+                    aria-pressed={packageId === TRIAL.id}
+                    onClick={() => {
+                      setPackageId(TRIAL.id)
+                      if (subjectNames.length > TRIAL.maxSubjects) {
+                        setSubjectNames(subjectNames.slice(0, TRIAL.maxSubjects))
+                      }
+                      setError('')
+                    }}
+                  >
+                    <span className="tag tag--action">Trial</span>
+                    <span className="package-choice__name">{TRIAL.label}</span>
+                    <span className="package-choice__includes">{TRIAL.blurb}</span>
+                  </button>
                   {PACKAGES.map((pack) => (
                     <button
                       key={pack.id}
@@ -308,9 +342,6 @@ function BookClass() {
 
             {step === 4 && (
               <div className="booking__fieldset">
-                <p className="tag tag--action booking__trial">
-                  {AVAILABILITY.freeTrialChip}
-                </p>
                 <fieldset className="booking__fieldset booking__fieldset--inner">
                   <legend className="booking__legend">Pick a preferred time</legend>
                   <div className="option-grid option-grid--slots">
