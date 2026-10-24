@@ -1668,3 +1668,19 @@
 .subject-pick-group {
   margin-bottom: 10px;
 }
+
+/* Product link button */
+.product-card__link {
+  margin-top: 16px;
+  align-self: flex-start;
+  display: inline-block;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card .card__price {
+  margin-top: auto;
+}

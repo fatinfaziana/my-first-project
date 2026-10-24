@@ -61,6 +61,16 @@ function Products() {
                   <span className="card__price-note"> · {product.optionsNote}</span>
                 )}
               </p>
+              {product.url && (
+                <a
+                  className="btn btn--primary product-card__link"
+                  href={product.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {product.urlLabel} ↗
+                </a>
+              )}
             </article>
           ))}
         </div>

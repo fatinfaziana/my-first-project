@@ -396,11 +396,13 @@ export const PRODUCTS = {
     },
     {
       id: 'prod-marking',
-      name: 'Marking helper',
+      name: 'Marking helper (mark4you)',
       description:
-        'Upload your marking scheme; it scans the keywords for each answer. Then scan a student’s answer to check it. Built to read handwriting, including hard-to-read writing.',
+        'Upload your marking scheme; it scans the keywords for each answer, then scan a student’s answer to check it. Built to read handwriting, including hard-to-read writing.',
       price: 120,
       audience: 'teachers',
+      url: 'https://v0-mark4you.vercel.app/',
+      urlLabel: 'Try mark4you',
     },
   ],
 }
