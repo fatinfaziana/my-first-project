@@ -1396,3 +1396,56 @@
   padding: 28px;
   box-shadow: 0 12px 32px rgba(22, 24, 29, 0.06);
 }
+
+/* Subjects offered: stage blocks */
+.stage-block {
+  border-radius: 18px;
+  padding: 22px;
+  border: 1px solid var(--hairline);
+  margin-bottom: 18px;
+}
+
+.stage-block--mint {
+  background: #eaf6d6;
+  border-color: #d4ecb0;
+}
+
+.stage-block--sky {
+  background: #e3eefb;
+  border-color: #c4daf3;
+}
+
+.stage-block--peach {
+  background: #fbe3d2;
+  border-color: #f2c8a6;
+}
+
+.stage-block__name {
+  margin: 0 0 14px;
+  font-size: 1.25rem;
+}
+
+.stage-block__columns {
+  display: grid;
+  gap: 24px;
+}
+
+.syllabus-block__label {
+  font-weight: 600;
+  margin: 0 0 6px;
+  font-size: 0.9375rem;
+}
+
+.stage-block .row {
+  border-bottom-color: rgba(22, 24, 29, 0.1);
+}
+
+.stage-block .row:first-child {
+  border-top-color: rgba(22, 24, 29, 0.1);
+}
+
+@media (min-width: 900px) {
+  .stage-block__columns {
+    grid-template-columns: 1fr 1fr;
+  }
+}

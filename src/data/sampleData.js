@@ -346,8 +346,10 @@ export const NAV_LINKS = [
   { id: 'feedback', label: 'Feedback', icon: 'feedback' },
   { id: 'availability', label: 'Booking calendar', icon: 'calendar' },
   { id: 'subjects', label: 'Subjects offered', icon: 'subjects' },
+  { id: 'booking', label: 'Book a class', icon: 'book' },
   { id: 'products', label: 'Products', icon: 'products' },
   { id: 'collaborate', label: 'Collaborate', icon: 'collaborate' },
+  { id: 'contact', label: 'Contact', icon: 'profile' },
 ]
 
 export const PLACEHOLDER = 'RM -'
