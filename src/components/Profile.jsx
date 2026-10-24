@@ -19,12 +19,12 @@ function Profile() {
         </div>
 
         <aside className="profile-split__card reveal" ref={rightRef} aria-label="Tutor snapshot">
-          <div className="hero__portrait" aria-hidden="true">
-            <svg viewBox="0 0 64 64" width="56" height="56">
-              <circle cx="32" cy="22" r="12" fill="none" stroke="currentColor" strokeWidth="3" />
-              <path d="M12 56c0-11 9-18 20-18s20 7 20 18" fill="none" stroke="currentColor" strokeWidth="3" />
-            </svg>
-          </div>
+          <img
+            className="profile-photo"
+            src={PROFILE.photo}
+            alt="The tutor"
+            loading="lazy"
+          />
           <h3 className="hero__card-name">{PROFILE.name}</h3>
           <ul className="check-list">
             {PROFILE.points.map((point) => (

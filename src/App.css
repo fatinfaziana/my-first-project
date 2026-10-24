@@ -1449,3 +1449,56 @@
     grid-template-columns: 1fr 1fr;
   }
 }
+
+/* Tutor photo */
+.profile-photo {
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+  margin-bottom: 16px;
+}
+
+/* Star rating */
+.feedback-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.stars {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.stars__on {
+  color: #e8a900;
+}
+
+.stars__off {
+  color: rgba(22, 24, 29, 0.18);
+}
+
+/* Rate note */
+.rate-note {
+  background: #f1f0ea;
+  border-radius: 18px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.rate-note__title {
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+
+/* Package price range line */
+.package-card__range {
+  color: var(--grey);
+  font-size: 0.875rem;
+  margin: 6px 0 0;
+}

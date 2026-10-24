@@ -17,9 +17,32 @@ export const PRICES = {
   mostPopularExtra: 35,
 }
 
+/* Booking types: one-to-one costs more, groups (2–4) cost less, online is
+   cheaper than in person. Each subject's listed price is the group, in-person
+   rate; these adjust it. */
+export const CLASS_TYPES = {
+  group: { id: 'group', label: 'Group (2–4)', factor: 1 },
+  oneToOne: { id: 'oneToOne', label: 'One-to-one', factor: 1.6 },
+}
+
+export const MODES = {
+  online: { id: 'online', label: 'Online', factor: 0.9 },
+  inPerson: { id: 'inPerson', label: 'In person', factor: 1 },
+}
+
+export const COMBO_DISCOUNT = 0.25
+
+export function subjectPriceFor(basePrice, classType, mode, isCombo) {
+  const classFactor = CLASS_TYPES[classType]?.factor ?? 1
+  const modeFactor = MODES[mode]?.factor ?? 1
+  const comboFactor = isCombo ? 1 - COMBO_DISCOUNT : 1
+  return Math.round(basePrice * classFactor * modeFactor * comboFactor)
+}
+
 export const PROFILE = {
   heading: 'About the tuition service',
   name: 'The tutor',
+  photo: '/tutor.jpg',
   intro:
     'A tuition service built on ten years of teaching experience, with one aim: helping every student walk into their exam prepared and confident.',
   paragraphs: [
@@ -46,23 +69,23 @@ export const SUBJECT_CATALOGUE = [
       national: {
         label: 'National',
         subjects: [
-          'Early Literacy (Bahasa Melayu)',
-          'Early Literacy (English)',
-          'Early Numeracy',
-          'Islamic / Moral Education',
-          'Art and Craft',
-          'Music and Movement',
+          { name: 'Early Literacy (Bahasa Melayu)', price: 40 },
+          { name: 'Early Literacy (English)', price: 45 },
+          { name: 'Early Numeracy', price: 45 },
+          { name: 'Islamic / Moral Education', price: 35 },
+          { name: 'Art and Craft', price: 35 },
+          { name: 'Music and Movement', price: 35 },
         ],
       },
       international: {
         label: 'International',
         subjects: [
-          'Phonics and Reading',
-          'Early English',
-          'Early Mathematics',
-          'Discovery of the World',
-          'Creative Arts',
-          'Physical Play',
+          { name: 'Phonics and Reading', price: 50 },
+          { name: 'Early English', price: 50 },
+          { name: 'Early Mathematics', price: 50 },
+          { name: 'Discovery of the World', price: 40 },
+          { name: 'Creative Arts', price: 40 },
+          { name: 'Physical Play', price: 35 },
         ],
       },
     },
@@ -75,23 +98,23 @@ export const SUBJECT_CATALOGUE = [
       national: {
         label: 'National',
         subjects: [
-          'Bahasa Melayu',
-          'English',
-          'Mathematics',
-          'Science',
-          'Sejarah (History)',
-          'Pendidikan Islam / Moral',
+          { name: 'Bahasa Melayu', price: 50 },
+          { name: 'English', price: 55 },
+          { name: 'Mathematics', price: 60 },
+          { name: 'Science', price: 60 },
+          { name: 'Sejarah (History)', price: 50 },
+          { name: 'Pendidikan Islam / Moral', price: 45 },
         ],
       },
       international: {
         label: 'International',
         subjects: [
-          'English',
-          'Mathematics',
-          'Science',
-          'Global Perspectives',
-          'Information and Communication Technology',
-          'Art and Design',
+          { name: 'English', price: 60 },
+          { name: 'Mathematics', price: 65 },
+          { name: 'Science', price: 65 },
+          { name: 'Global Perspectives', price: 55 },
+          { name: 'Information and Communication Technology', price: 60 },
+          { name: 'Art and Design', price: 50 },
         ],
       },
     },
@@ -104,31 +127,31 @@ export const SUBJECT_CATALOGUE = [
       national: {
         label: 'National',
         subjects: [
-          'Bahasa Melayu',
-          'English',
-          'Mathematics',
-          'Additional Mathematics',
-          'Physics',
-          'Chemistry',
-          'Biology',
-          'Sejarah (History)',
-          'Pendidikan Islam / Moral',
-          'Prinsip Perakaunan',
+          { name: 'Bahasa Melayu', price: 55 },
+          { name: 'English', price: 60 },
+          { name: 'Mathematics', price: 70 },
+          { name: 'Additional Mathematics', price: 80 },
+          { name: 'Physics', price: 75 },
+          { name: 'Chemistry', price: 75 },
+          { name: 'Biology', price: 70 },
+          { name: 'Sejarah (History)', price: 55 },
+          { name: 'Pendidikan Islam / Moral', price: 50 },
+          { name: 'Prinsip Perakaunan', price: 65 },
         ],
       },
       international: {
         label: 'International',
         subjects: [
-          'English Language',
-          'Mathematics',
-          'Further Mathematics',
-          'Physics',
-          'Chemistry',
-          'Biology',
-          'Economics',
-          'Business Studies',
-          'Computer Science',
-          'Accounting',
+          { name: 'English Language', price: 65 },
+          { name: 'Mathematics', price: 75 },
+          { name: 'Further Mathematics', price: 90 },
+          { name: 'Physics', price: 85 },
+          { name: 'Chemistry', price: 85 },
+          { name: 'Biology', price: 80 },
+          { name: 'Economics', price: 75 },
+          { name: 'Business Studies', price: 70 },
+          { name: 'Computer Science', price: 85 },
+          { name: 'Accounting', price: 70 },
         ],
       },
     },
@@ -281,6 +304,7 @@ export const FEEDBACK = {
       childName: 'Nur',
       subject: 'SPM Chemistry',
       tone: 'mint',
+      rating: 5,
     },
     {
       id: 'fb-2',
@@ -290,6 +314,7 @@ export const FEEDBACK = {
       childName: 'Ryan',
       subject: 'IGCSE Mathematics',
       tone: 'sky',
+      rating: 5,
     },
     {
       id: 'fb-3',
@@ -299,6 +324,17 @@ export const FEEDBACK = {
       childName: 'Anya',
       subject: 'A-Level Economics',
       tone: 'peach',
+      rating: 4,
+    },
+    {
+      id: 'fb-4',
+      quote:
+        'Patient with my son and always explains until he gets it. Booking was easy too.',
+      parentName: 'Farah',
+      childName: 'Adam',
+      subject: 'Primary Science',
+      tone: 'mint',
+      rating: 4,
     },
   ],
 }
