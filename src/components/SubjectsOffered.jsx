@@ -25,29 +25,31 @@ function SubjectsOffered() {
       <p className="eyebrow">Subjects</p>
       <h2 id="subjects-heading">{SUBJECTS_INTRO.heading}</h2>
       <p className="section__lead">
-        Every subject we teach, with its price range. Group classes (2–4) and
-        online cost less; one-to-one costs more. The combo gives a further
-        discount. Book in the next section.
+        Every subject we teach, with its price range. Group classes (2–4) or
+        one-to-one, online or in person, and combos all sit within it. Book in
+        the next section.
       </p>
 
       <div className="section__body reveal" ref={bodyRef}>
         <div className="rate-note">
-          <p className="rate-note__title">How the price changes</p>
+          <p className="rate-note__title">Ways to take a class</p>
           <ul className="chip-list">
             {Object.values(CLASS_TYPES).map((type) => (
               <li key={type.id} className="chip chip--soft">
                 {type.label}
-                {type.factor > 1 ? ' costs more' : ' costs less'}
               </li>
             ))}
             {Object.values(MODES).map((mode) => (
               <li key={mode.id} className="chip chip--soft">
                 {mode.label}
-                {mode.factor < 1 ? ' costs less' : ' costs more'}
               </li>
             ))}
-            <li className="chip chip--soft">Combo subjects cost less</li>
+            <li className="chip chip--soft">Combo subjects</li>
           </ul>
+          <p className="rate-note__text">
+            The range under each subject shows the lowest to highest price across
+            these choices. Your total is shown when you book.
+          </p>
         </div>
 
         {SUBJECT_CATALOGUE.map((stage) => (
@@ -94,7 +96,7 @@ function SubjectsOffered() {
                     : 'From RM 63/month'}
               </p>
               <p className="package-card__range">
-                One-to-one and in person costs more.
+                Your total is shown when you book.
               </p>
             </article>
           ))}

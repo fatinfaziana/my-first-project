@@ -201,9 +201,16 @@ export const PRODUCTS = {
       id: 'prod-notes',
       name: 'Completed all-chapters notes',
       description:
-        'Full notes for every chapter, finished by a teacher, available per subject.',
+        'Full notes for every chapter, finished by a teacher. Pick a set below — all sets are the same price.',
       price: 55,
       audience: 'students',
+      options: [
+        'Science (Physics, Chemistry, Biology)',
+        'Maths (Mathematics, Additional / Further Maths)',
+        'Languages (English, Bahasa Melayu)',
+        'Business (Economics, Accounting, Business Studies)',
+      ],
+      optionsNote: 'Same price for any set',
     },
     {
       id: 'prod-marking',

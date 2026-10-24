@@ -252,7 +252,6 @@ function BookClass() {
                         }}
                       >
                         {type.label}
-                        {type.factor > 1 ? ' (costs more)' : ' (costs less)'}
                       </button>
                     ))}
                   </div>
@@ -273,7 +272,6 @@ function BookClass() {
                         }}
                       >
                         {item.label}
-                        {item.factor < 1 ? ' (cheaper)' : ''}
                       </button>
                     ))}
                   </div>

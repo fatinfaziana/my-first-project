@@ -46,7 +46,21 @@ function Products() {
               </div>
               <h3 className="card__title">{product.name}</h3>
               <p className="card__text">{product.description}</p>
-              <p className="card__price nums">RM {product.price}</p>
+              {product.options && (
+                <ul className="product-options">
+                  {product.options.map((option) => (
+                    <li key={option} className="product-options__item">
+                      {option}
+                    </li>
+                  ))}
+                </ul>
+              )}
+              <p className="card__price nums">
+                RM {product.price}
+                {product.optionsNote && (
+                  <span className="card__price-note"> · {product.optionsNote}</span>
+                )}
+              </p>
             </article>
           ))}
         </div>
