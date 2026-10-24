@@ -135,53 +135,60 @@ export const SUBJECT_CATALOGUE = [
   },
 ]
 
-/* Services offered, per audience. Students first. */
-export const SERVICES = {
-  heading: 'Products & services',
-  note: 'Choose who it is for, see the services, then pick your subjects to book.',
+/* Subjects offered, shown with the booking flow. */
+export const SUBJECTS_INTRO = {
+  heading: 'Subjects offered',
+  note: 'Choose who it is for, then pick your stage, syllabus and subjects to book a class.',
   audiences: [
     {
       id: 'students',
       label: 'For students',
-      blurb: 'Tuition, completed notes and answer checkers.',
+      blurb: 'Tuition classes from kindergarten to A-Level.',
     },
     {
       id: 'teachers',
       label: 'For teachers',
-      blurb: 'Tools that cut marking time.',
+      blurb: 'Find out about teaching with us.',
     },
   ],
-  students: [
+}
+
+/* Standalone products, not tied to a subject choice. */
+export const PRODUCTS = {
+  heading: 'Products',
+  note: 'Products you can get on their own: scanners, answer checkers, completed notes and the marking helper.',
+  items: [
     {
-      id: 'svc-tuition',
-      name: 'Tuition classes',
+      id: 'prod-scanner',
+      name: 'Answer scanner',
       description:
-        'Weekly classes from kindergarten to A-Level, national or international syllabus, one-to-one or small group.',
-      price: 60,
-      from: true,
+        'Scan your answer sheet; it compares your answers against the correct answers and shows what to fix. In browser, with the backend to come.',
+      price: 40,
+      audience: 'students',
     },
     {
-      id: 'svc-notes',
+      id: 'prod-checker',
+      name: 'Answer checker',
+      description:
+        'Check your own answers against the marking scheme and see the marks earned.',
+      price: 30,
+      audience: 'students',
+    },
+    {
+      id: 'prod-notes',
       name: 'Completed all-chapters notes',
       description:
         'Full notes for every chapter, finished by a teacher, available per subject.',
       price: 55,
+      audience: 'students',
     },
     {
-      id: 'svc-checker',
-      name: 'Answer checker (scanner)',
-      description:
-        'Scan your answer sheet; it compares your answers against the correct answers and shows what to fix. In browser, with the backend to come.',
-      price: 40,
-    },
-  ],
-  teachers: [
-    {
-      id: 'svc-marking',
+      id: 'prod-marking',
       name: 'Marking helper',
       description:
         'Upload your marking scheme; it scans the keywords for each answer. Then scan a student’s answer to check it. Built to read handwriting, including hard-to-read writing.',
       price: 120,
+      audience: 'teachers',
     },
   ],
 }
@@ -337,8 +344,9 @@ export const CONTACT = {
 export const NAV_LINKS = [
   { id: 'profile', label: 'Profile', icon: 'profile' },
   { id: 'feedback', label: 'Feedback', icon: 'feedback' },
-  { id: 'services', label: 'Products & services', icon: 'products' },
   { id: 'availability', label: 'Booking calendar', icon: 'calendar' },
+  { id: 'subjects', label: 'Subjects offered', icon: 'subjects' },
+  { id: 'products', label: 'Products', icon: 'products' },
   { id: 'collaborate', label: 'Collaborate', icon: 'collaborate' },
 ]
 

@@ -1368,3 +1368,9 @@
   margin-top: 28px;
   max-width: 70ch;
 }
+
+/* Static info option (not clickable) */
+.option--static {
+  cursor: default;
+  background: #f1f0ea;
+}

@@ -2,8 +2,9 @@ import Sidebar from './components/Header'
 import Hero from './components/Hero'
 import Profile from './components/Profile'
 import Feedback from './components/Feedback'
-import ProductsServices from './components/ProductsServices'
 import Availability from './components/Availability'
+import SubjectsOffered from './components/SubjectsOffered'
+import Products from './components/Products'
 import Collaborate from './components/Collaborate'
 import Footer from './components/Footer'
 import './App.css'
@@ -17,8 +18,9 @@ function App() {
           <Hero />
           <Profile />
           <Feedback />
-          <ProductsServices />
           <Availability />
+          <SubjectsOffered />
+          <Products />
           <Collaborate />
         </main>
         <Footer />
