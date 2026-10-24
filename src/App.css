@@ -1102,9 +1102,12 @@
 /* Desktop */
 @media (min-width: 900px) {
   .hero {
-    grid-template-columns: 1.6fr 1fr;
-    align-items: center;
-    padding: 40px 0 96px;
+    padding: 40px 0 72px;
+  }
+
+  .profile-split {
+    grid-template-columns: 1.5fr 1fr;
+    align-items: start;
   }
 
   .section {
@@ -1373,4 +1376,23 @@
 .option--static {
   cursor: default;
   background: #f1f0ea;
+}
+
+/* Profile two-column split (service text + tutor card) */
+.profile-split {
+  display: grid;
+  gap: 32px;
+  margin-top: 20px;
+}
+
+.profile-split__text p {
+  margin: 0 0 14px;
+}
+
+.profile-split__card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 12px 32px rgba(22, 24, 29, 0.06);
 }

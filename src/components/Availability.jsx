@@ -68,11 +68,6 @@ function Availability() {
                   onClick={() => setSelectedDate(isSelected ? null : date)}
                 >
                   <span className="calendar__date">{date}</span>
-                  {isFull && (
-                    <span className="calendar__mark calendar__mark--full">
-                      {statuses.full}
-                    </span>
-                  )}
                 </button>
               )
             })}

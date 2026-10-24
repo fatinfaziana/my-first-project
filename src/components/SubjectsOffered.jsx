@@ -96,15 +96,6 @@ function SubjectsOffered() {
       <p className="section__lead">{SUBJECTS_INTRO.note}</p>
 
       <div className="section__body reveal" ref={bodyRef}>
-        <div className="option-grid option-grid--audience">
-          {SUBJECTS_INTRO.audiences.map((item) => (
-            <div key={item.id} className="option option--static">
-              <span className="option__title">{item.label}</span>
-              <span className="option__meta">{item.blurb}</span>
-            </div>
-          ))}
-        </div>
-
         <div className="booking">
           {submitted ? (
             <div className="booking-success">
