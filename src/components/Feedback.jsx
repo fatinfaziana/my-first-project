@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { FEEDBACK } from '../data/sampleData'
 import { useReveal } from '../hooks/useReveal'
 
@@ -36,14 +37,36 @@ function Stars({ rating }) {
 
 function Feedback() {
   const gridRef = useReveal()
+  const formRef = useReveal()
+  const [parentName, setParentName] = useState('')
+  const [childName, setChildName] = useState('')
+  const [subject, setSubject] = useState('')
+  const [rating, setRating] = useState(5)
+  const [comment, setComment] = useState('')
+  const [photoName, setPhotoName] = useState('')
+  const [error, setError] = useState('')
+  const [submitted, setSubmitted] = useState(false)
+
   const items = [...FEEDBACK.items].sort((a, b) => b.rating - a.rating)
+
+  function sendComment(event) {
+    event.preventDefault()
+    if (!parentName.trim()) {
+      setError('Add your name.')
+      return
+    }
+    if (!comment.trim()) {
+      setError('Write your feedback.')
+      return
+    }
+    setError('')
+    setSubmitted(true)
+  }
 
   return (
     <section id="feedback" className="section" aria-labelledby="feedback-heading">
       <p className="eyebrow">Feedback</p>
       <h2 id="feedback-heading">{FEEDBACK.heading}</h2>
-      <p className="section__lead">{FEEDBACK.note}</p>
-      <p className="tag tag--action feedback__reward">{FEEDBACK.reward}</p>
 
       <div className="cards-grid cards-grid--feedback reveal" ref={gridRef}>
         {items.map((item) => (
@@ -66,10 +89,109 @@ function Feedback() {
         ))}
       </div>
 
-      <p className="feedback__note">
-        Parents and students can send their own feedback with a rating and a
-        photo. With the backend added they will be stored.
-      </p>
+      <div className="feedback-leave reveal" ref={formRef}>
+        <h3 className="subheading">Leave your feedback</h3>
+        {submitted ? (
+          <div className="booking-success">
+            <p className="booking-success__title">
+              Thank you — your feedback is ready.
+            </p>
+            <p className="booking-success__text">
+              This is a sample page, nothing was sent or saved.
+            </p>
+            <button
+              type="button"
+              className="btn btn--primary"
+              onClick={() => {
+                setSubmitted(false)
+                setParentName('')
+                setChildName('')
+                setSubject('')
+                setRating(5)
+                setComment('')
+                setPhotoName('')
+              }}
+            >
+              Leave another
+            </button>
+          </div>
+        ) : (
+          <form className="feedback-form" onSubmit={sendComment}>
+            <div className="field">
+              <label htmlFor="fb-parent">Your name</label>
+              <input
+                id="fb-parent"
+                type="text"
+                value={parentName}
+                onChange={(event) => {
+                  setParentName(event.target.value)
+                  setError('')
+                }}
+              />
+            </div>
+            <div className="field">
+              <label htmlFor="fb-child">Student name</label>
+              <input
+                id="fb-child"
+                type="text"
+                value={childName}
+                onChange={(event) => setChildName(event.target.value)}
+              />
+            </div>
+            <div className="field">
+              <label htmlFor="fb-subject">Subject</label>
+              <input
+                id="fb-subject"
+                type="text"
+                value={subject}
+                onChange={(event) => setSubject(event.target.value)}
+              />
+            </div>
+            <div className="field">
+              <label htmlFor="fb-rating">Rating</label>
+              <select
+                id="fb-rating"
+                value={rating}
+                onChange={(event) => setRating(Number(event.target.value))}
+              >
+                {[5, 4, 3, 2, 1].map((value) => (
+                  <option key={value} value={value}>
+                    {value} star{value > 1 ? 's' : ''}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="field">
+              <label htmlFor="fb-comment">Your feedback</label>
+              <textarea
+                id="fb-comment"
+                rows="4"
+                value={comment}
+                onChange={(event) => {
+                  setComment(event.target.value)
+                  setError('')
+                }}
+              />
+            </div>
+            <div className="field">
+              <label htmlFor="fb-photo">Add a photo (optional)</label>
+              <input
+                id="fb-photo"
+                type="file"
+                accept="image/*"
+                onChange={(event) => setPhotoName(event.target.files?.[0]?.name ?? '')}
+              />
+              {photoName && <p className="field__hint">Selected: {photoName}</p>}
+            </div>
+            <p className="booking__error" role="alert">
+              {error}
+            </p>
+            <button type="submit" className="btn btn--primary">
+              Send feedback
+            </button>
+          </form>
+        )}
+      </div>
     </section>
   )
 }

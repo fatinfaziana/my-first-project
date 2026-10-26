@@ -1684,3 +1684,79 @@
 .product-card .card__price {
   margin-top: auto;
 }
+
+/* Subjects offered: mobile readability */
+@media (max-width: 700px) {
+  .stage-block {
+    padding: 16px 14px;
+    border-radius: 14px;
+  }
+
+  .stage-block__name {
+    font-size: 1.125rem;
+    margin-bottom: 10px;
+  }
+
+  .stage-block__columns {
+    gap: 18px;
+  }
+
+  .syllabus-block__label {
+    font-size: 0.875rem;
+  }
+
+  .stage-block .row {
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 10px 0;
+  }
+
+  .stage-block .row__title {
+    font-size: 0.9375rem;
+  }
+
+  .stage-block .row__amount {
+    margin-left: auto;
+  }
+
+  .subject-group__label {
+    margin-top: 10px;
+  }
+}
+
+/* Feedback: leave a comment form */
+.feedback-leave {
+  margin-top: 40px;
+  max-width: 640px;
+}
+
+.feedback-form .field textarea,
+.feedback-form .field select {
+  width: 100%;
+  font: inherit;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  background: var(--card);
+  color: var(--ink);
+  resize: vertical;
+}
+
+.feedback-form .field textarea:focus-visible,
+.feedback-form .field select:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 1px;
+  border-color: var(--ink);
+}
+
+/* Contact link lines */
+.footer-lines a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.footer-lines a:hover,
+.footer-lines a:focus-visible {
+  color: #4a7c1a;
+}

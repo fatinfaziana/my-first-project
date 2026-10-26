@@ -106,12 +106,6 @@ function SubjectsOffered() {
             </article>
           ))}
         </div>
-
-        <p className="price-note">
-          Sample figures only. Prices are worked out from each subject's base
-          price, the class type, the mode and whether it is a combo. No advising
-          or recommending.
-        </p>
       </div>
     </section>
   )

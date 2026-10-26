@@ -361,24 +361,8 @@ export const SUBJECTS_INTRO = {
 /* Standalone products, not tied to a subject choice. */
 export const PRODUCTS = {
   heading: 'Products',
-  note: 'Products you can get on their own: scanners, answer checkers, completed notes and the marking helper.',
+  note: 'Products you can get on their own: completed notes and the marking helper.',
   items: [
-    {
-      id: 'prod-scanner',
-      name: 'Answer scanner',
-      description:
-        'Scan your answer sheet; it compares your answers against the correct answers and shows what to fix. In browser, with the backend to come.',
-      price: 40,
-      audience: 'students',
-    },
-    {
-      id: 'prod-checker',
-      name: 'Answer checker',
-      description:
-        'Check your own answers against the marking scheme and see the marks earned.',
-      price: 30,
-      audience: 'students',
-    },
     {
       id: 'prod-notes',
       name: 'Completed all-chapters notes',
@@ -479,8 +463,6 @@ export const PACKAGES = [
 
 export const FEEDBACK = {
   heading: 'What parents and students say',
-  note: 'Sample feedback. Families who send feedback get a combo price free for 2 weeks.',
-  reward: 'Leave feedback and get a combo price free for 2 weeks.',
   items: [
     {
       id: 'fb-1',
@@ -554,11 +536,14 @@ export const COLLABORATE = {
 
 export const CONTACT = {
   heading: 'Get in touch',
-  lines: [
-    'WhatsApp: +60 12-000 0000 (sample)',
-    'Email: hello@example.com (sample)',
-    'Area: Online and in-person, sample location',
-  ],
+  whatsapp: {
+    label: 'WhatsApp: 0189122615',
+    url: 'https://wa.me/60189122615',
+  },
+  email: {
+    label: 'Email: fatinfazianawork@gmail.com',
+    url: 'mailto:fatinfazianawork@gmail.com',
+  },
   disclaimer:
     'This page uses sample data only. Nothing is sent, saved or booked from this site.',
 }

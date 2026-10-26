@@ -6,9 +6,14 @@ function Footer() {
       <p className="eyebrow">Contact</p>
       <h2>{CONTACT.heading}</h2>
       <ul className="footer-lines">
-        {CONTACT.lines.map((line) => (
-          <li key={line}>{line}</li>
-        ))}
+        <li>
+          <a href={CONTACT.whatsapp.url} target="_blank" rel="noopener noreferrer">
+            {CONTACT.whatsapp.label}
+          </a>
+        </li>
+        <li>
+          <a href={CONTACT.email.url}>{CONTACT.email.label}</a>
+        </li>
       </ul>
       <p className="footer-disclaimer">{CONTACT.disclaimer}</p>
     </footer>

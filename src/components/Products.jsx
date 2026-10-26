@@ -77,8 +77,8 @@ function Products() {
       </div>
 
       <p className="price-note">
-        Scanners, checkers and the marking helper run with the backend and AI
-        service. Nothing is scanned or uploaded on this sample page.
+        The marking helper runs with the backend and AI service. Nothing is
+        uploaded on this sample page.
       </p>
     </section>
   )
