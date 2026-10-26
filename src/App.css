@@ -1760,3 +1760,252 @@
 .footer-lines a:focus-visible {
   color: #4a7c1a;
 }
+
+/* Dashboard-inspired public layout */
+.app-shell--dashboard {
+  background: #ffffff;
+}
+
+.app-main--dashboard {
+  max-width: 1380px;
+  padding: 0 40px;
+}
+
+.topbar {
+  min-height: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  position: relative;
+  background: #ffffff;
+}
+
+.topbar__profile {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
+.topbar__avatar {
+  width: 58px;
+  height: 58px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.topbar__identity {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.topbar__identity strong {
+  font-size: 1.15rem;
+}
+
+.topbar__identity span {
+  display: flex;
+  gap: 20px;
+  color: var(--grey);
+  font-size: 0.875rem;
+}
+
+.topbar__identity b {
+  color: #4a9f4a;
+  font-weight: 500;
+}
+
+.topbar__identity em {
+  font-style: normal;
+}
+
+.topbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.round-action {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--hairline);
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 1.6rem;
+}
+
+.topbar__cta {
+  background: var(--ink);
+  color: #fff;
+  border-radius: 999px;
+  padding: 15px 28px;
+  text-decoration: none;
+  font-weight: 700;
+  margin-left: 4px;
+}
+
+.topbar__nav {
+  display: flex;
+  gap: 18px;
+  position: absolute;
+  left: 50%;
+  bottom: -30px;
+  transform: translateX(-50%);
+  z-index: 3;
+  white-space: nowrap;
+}
+
+.topbar__nav a {
+  color: var(--grey);
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+
+.topbar__nav a:hover,
+.topbar__nav a:focus-visible {
+  color: var(--ink);
+}
+
+.hero--dashboard {
+  min-height: 430px;
+  margin: 20px 0 56px;
+  padding: 70px 70px;
+  border-radius: 26px;
+  background: linear-gradient(135deg, #d7f4e6 0%, #c8eedf 100%);
+  grid-template-columns: 1.4fr 0.8fr;
+  align-items: center;
+}
+
+.hero--dashboard .hero__headline {
+  font-size: clamp(3rem, 7vw, 6rem);
+  max-width: 700px;
+  letter-spacing: -0.055em;
+}
+
+.hero--dashboard .hero__trial {
+  color: #47545b;
+  max-width: 470px;
+}
+
+.hero__dashboard-card {
+  background: #f1ece5;
+  border-radius: 22px;
+  padding: 30px;
+  min-height: 270px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero__mini-avatar {
+  width: 70px;
+  height: 70px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: var(--lilac);
+}
+
+.hero__mini-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero__dashboard-card h2 {
+  margin-top: 18px;
+}
+
+.hero__dashboard-card p {
+  color: var(--grey);
+  margin: 6px 0 20px;
+}
+
+.hero__metric {
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hero__metric span {
+  color: var(--grey);
+  font-size: 0.85rem;
+}
+
+.booking-hub--dashboard {
+  background: #f3f0e9;
+  border-radius: 24px;
+  padding: 48px 38px;
+}
+
+.booking-hub--dashboard .booking-hub__grid {
+  margin-top: 24px;
+}
+
+.booking-hub--dashboard .booking-hub__panel {
+  background: transparent;
+}
+
+@media (max-width: 900px) {
+  .app-main--dashboard {
+    padding: 0 20px;
+  }
+
+  .topbar {
+    flex-wrap: wrap;
+    padding: 14px 0;
+  }
+
+  .topbar__actions {
+    margin-left: auto;
+  }
+
+  .topbar__nav {
+    position: static;
+    order: 3;
+    width: 100%;
+    transform: none;
+    overflow-x: auto;
+    padding: 8px 0;
+  }
+
+  .hero--dashboard {
+    grid-template-columns: 1fr;
+    padding: 42px 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .topbar__cta {
+    padding: 12px 16px;
+    font-size: 0.875rem;
+  }
+
+  .round-action {
+    width: 40px;
+    height: 40px;
+  }
+
+  .topbar__identity strong {
+    font-size: 0.95rem;
+  }
+
+  .topbar__identity span {
+    gap: 8px;
+    font-size: 0.75rem;
+  }
+
+  .hero--dashboard {
+    margin-top: 12px;
+  }
+
+  .hero--dashboard .hero__headline {
+    font-size: clamp(2.75rem, 14vw, 4rem);
+  }
+}
